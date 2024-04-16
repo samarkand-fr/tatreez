@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .smooth-edges {
+    -webkit-backface-visibility: hidden;
+    backface-visibility:hidden;
+  }
+}
+  .animate-wave {
+    animation-name: wave;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+  }
+  
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+
+  #ulMenu li:hover span {
+    background-color: red; 
+}
+
+.card {
+  animation: slideIn 1s forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* the delay for each card */
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 1.2s;
+}
+.card:nth-child(5) {
+  animation-delay: 1.6s;
+}
+.card:nth-child(6) {
+  animation-delay: 2.0s;
+}
+
+
+
+  
+
+@keyframes slideFromLeftToRight {
+  0% { left: -50%;
+  opacity:0.2 } 
+  70% { left: 70%;
+  opacity:.5 } 
+  100% { left: 50%; } 
+}
+
+@keyframes slideFromBottomToTop {
+  0% { bottom: 0%; } 
+  100% { bottom: 30%; } 
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: -50%; 
+  width: 50%;
+  height: 100%;
+  border-radius: 2%;
+  background-image: url('../images/thoubgaza.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: slideFromLeftToRight 5s ease-in-out forwards; 
+}
+
+.text-section {
+  padding: 2rem 4rem;
+  width: 50%;
+  position: absolute;
+  bottom: -50%; 
+  animation: slideFromBottomToTop 3s ease-in-out forwards; 
+}

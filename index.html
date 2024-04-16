@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine."
+    />
+    <title>Palestinian Embroidery - Tatreez</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./images/logo-tatreez.png" />
+
+    <link rel="stylesheet" href="./css/input.css" />
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- Start - Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="font-sans dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500"
+  >
+    <!-- Navbar -->
+    <header id="header"></header>
+
+    <main class="relative min-h-screen mt-8 flex">
+      <!-- Text section -->
+      <div class="text-section ">
+        <div class="py-10">
+          <p class="fadeInBottom flex flex-col pb-8 gap-4">
+            <span class="text-3xl font-semibold"
+              >Welcome to my website dedicated to the exquisite art of
+              Palestinian embroidery, also known as tatreez.</span
+            >
+            Delve into the rich cultural heritage of Palestine through intricate
+            designs, motifs, and stitches that have been passed down through
+            generations.
+          </p>
+          <div class="fadeInBottom">
+            <h2 class="text-lg font-semibold mb-2">
+              Palestinian Thoub Embroidery
+            </h2>
+            <p class="text-sm mb-4">
+              The thoub, a traditional Palestinian dress, serves as a canvas for
+              these exquisite embroideries, showcasing the artistry and
+              craftsmanship passed down through generations.
+            </p>
+            <p class="text-sm mb-4">
+              Palestinian thoub embroidery encompasses a rich tapestry of
+              cultural heritage, with each city boasting its own unique style
+              and designs.
+            </p>
+            <p class="text-sm mb-4">
+              From the vibrant motifs of Ramallah to the intricate stitches of
+              Bethlehem, Palestinian embroidery reflects the identity and
+              traditions of its people.
+            </p>
+            <a href="./html/tatreez-history.html" class="text-red-700 hover:text-red-900 flex items-center bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg shadow-md transition duration-300 ease-in-out">
+              <span class="mr-2">Read more</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            
+            
+          </div>
+        </div>
+      </div>
+      <!-- Image section -->
+      <div class="bg-image animate-fade-in"></div>
+    </main>
+    <footer id="footer"></footer>
+
+    <!-- Include utils.js -->
+    <script src="./js/utils.js"></script>
+    <script>
+      // Load the header content
+      loadContent("header", "./html/header.html");
+
+      // Load the footer content
+      loadContent("footer", "./html/footer.html");
+    </script>
+    <script src="./js/fade_in.js"></script>
+    <!-- Menu script -->
+    <script src="./js/menu.js"></script>
+  </body>
+</html>

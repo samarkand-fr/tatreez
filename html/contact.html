@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palestinian Embroidery - Tatreez - Contact</title>
+    <meta
+      name="description"
+      content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine."
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./images/logo-tatreez" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/input.css" />
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- Start - Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- End - Fonts -->
+  </head>
+
+  <body
+    class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500"
+  >
+    <!-- Navbar -->
+    <header id="header"></header>
+    <!-- Content -->
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 gap-16">
+        <section class="col-span-2 md:col-span-1">
+          <div class="max-w-screen-md">
+            <h1 class="text-4xl pt-10 pb-8"><b>CONTACT</b></h1>
+
+            <form class="space-y-8" action="mailto:info@example.com">
+              <div>
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >Your email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                  placeholder="example@gmail.com"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="subject"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                  placeholder="Let me know how I can help you"
+                  required
+                />
+              </div>
+              <div class="sm:col-span-2">
+                <label
+                  for="message"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                  >Your message</label
+                >
+                <textarea
+                  id="message"
+                  rows="6"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Leave a comment..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="py-3 px-5 text-sm font-medium text-center bg-black dark:bg-white text-white dark:text-black rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Send message
+              </button>
+            </form>
+          </div>
+        </section>
+        <div class="col-span-2 md:col-span-1 flex relative">
+          <div
+            class="bg-white dark:bg-neutral-900 p-5 pb-20 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 rotate-6 relative"
+          >
+            <img
+              src="../images/thoub7.jpeg"
+              alt=""
+              class="flex flex-col aspect-square w-full object-cover h-auto max-h-full"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <script src="../js/utils.js"></script>
+    <footer id="footer"></footer>
+    <script>
+      // Load the header content
+      loadContent("header", "header.html");
+
+      // Load the footer content
+      loadContent("footer", "footer.html");
+    </script>
+    <script src="../js/fade_in.js"></script>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
