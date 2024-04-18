@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer utilities {
   .tap-highlight-transparent {
     -webkit-tap-highlight-color: transparent;
@@ -11,6 +12,14 @@
     -webkit-backface-visibility: hidden;
     backface-visibility:hidden;
   }
+  
+}
+
+.font-signika {
+  font-family: 'Signika', sans-serif;
+}
+.font-nothing-you-could-do {
+  font-family: 'Nothing You Could Do', sans-serif;
 }
   .animate-wave {
     animation-name: wave;
@@ -97,7 +106,7 @@
   top: 0;
   left: -50%; 
   width: 50%;
-  height: 100%;
+  height: 86%;
   border-radius: 2%;
   background-image: url('../images/thoubgaza.jpeg');
   background-size: cover;
@@ -110,6 +119,92 @@
   padding: 2rem 4rem;
   width: 50%;
   position: absolute;
+  font-size:20px ;
   bottom: -50%; 
   animation: slideFromBottomToTop 3s ease-in-out forwards; 
+}
+.text2-section {
+  padding: 2rem 4rem;
+  font-size: large;
+  width: calc(60% - 8rem); 
+  position: absolute;
+  top: 30%; 
+  transform: translateY(-50%);
+  right: 0; 
+  animation: slideFromBottomToTop 3s ease-in-out forwards; 
+}
+
+
+.book {
+  position: relative;
+  border-radius: 10px;
+  width: 420px;
+  height: 500px;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  -webkit-transform: preserve-3d;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
+}
+
+.cover {
+  top: 0;
+  position: absolute;
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform-origin: 0;
+  -ms-transform-origin: 0;
+  transform-origin: 0;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.book:hover .cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-80deg);
+  -ms-transform: rotatey(-80deg);
+  transform: rotatey(-80deg);
+}
+
+.desc {
+  font-size: 18px;
+  font-weight: lighter;
+  padding-left: 50px;
+}
+section {
+  position: relative;
+  top: 0px;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
