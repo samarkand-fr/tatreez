@@ -48,24 +48,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
-    class="font-sans dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500"
+    class="font-signika dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500"
   >
     <!-- Navbar -->
     <header id="header"></header>
 
-    <section class="mt-20 mb-36 flex justify-between p-16">
+    <section class="relative my-20 flex md:justify-between flex-col p-16">
       <div class="book">
         <div class="cover">
           <img
             src="../images/Palestine.jpeg"
             alt="A woman wearing Al-Nasera's thoub"
+            class="w-full object-cover rounded-lg"
           />
         </div>
-        <div class="desc font-nothing-you-could-do">
+        <div class="text-2xl font-medium pl-12 font-nothing-you-could-do">
           <p>
-            <span class="text-2xl font-bold block text-center mb-10"
-              >Palestine</span
-            >
+            <span class="font-bold block text-center mb-5">Palestine</span>
             is a land steeped in history, culture, and resilience. It's a nation
             where every stone tells a story, and every corner whispers the
             echoes of its people's struggle for freedom and justice. Despite
@@ -75,7 +74,9 @@
         </div>
       </div>
 
-      <div class="text2-section md:text-xl font-signika">
+      <div
+        class="mt-20 md:px-8 md:py-8 md:w-2/4 md:absolute lg:top-1/4 md:right-0 md:transform md:-translate-y-2/4 md:animate-slide-from-bottom-to-top md:text-xl w-full"
+      >
         <p class="text-3xl font-semibold pb-4">
           Welcome to my website dedicated to the exquisite art of Palestinian
           embroidery, also known as tatreez.
@@ -93,9 +94,14 @@
         </p>
       </div>
     </section>
-    <section class="relative min-h-screen mt-8 flex font-signika">
+
+    <section
+      class="relative md:min-h-screen mt-8 flex md:flex-row flex-col-reverse"
+    >
       <!-- Text section -->
-      <div class="text-section">
+      <div
+        class="px-8 pb-8 md:w-1/2 md:absolute md:text-lg md:bottom-2/4 animate-slide-from-bottom-to-top"
+      >
         <div class="py-10">
           <p class="fadeInBottom flex flex-col pb-8 gap-4">
             Delve into the rich cultural heritage of Palestine through intricate
@@ -132,7 +138,9 @@
         </div>
       </div>
       <!-- Image section -->
-      <div class="bg-image animate-fade-in"></div>
+      <div
+        class="bg-image md:animate-fade-in md:absolute md:top-0 md:ml-28 md:w-[550px] md:h-[600px] rounded-lg w-full h-[500px]"
+      ></div>
     </section>
 
     <footer id="footer"></footer>

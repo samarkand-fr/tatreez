@@ -12,15 +12,16 @@
     -webkit-backface-visibility: hidden;
     backface-visibility:hidden;
   }
+  .font-signika {
+    font-family: 'Signika', sans-serif;
+  }
+  .font-nothing-you-could-do {
+    font-family: 'Nothing You Could Do', sans-serif;
+  }
   
 }
 
-.font-signika {
-  font-family: 'Signika', sans-serif;
-}
-.font-nothing-you-could-do {
-  font-family: 'Nothing You Could Do', sans-serif;
-}
+
   .animate-wave {
     animation-name: wave;
     animation-duration: 2.5s;
@@ -100,14 +101,13 @@
   0% { bottom: 0%; } 
   100% { bottom: 30%; } 
 }
-
+.animate-slide-from-bottom-to-top {
+  animation-name: slideFromBottomToTop;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 .bg-image {
-  position: absolute;
-  top: 0;
-  left: -50%; 
-  width: 50%;
-  height: 90%;
-  border-radius: 2%;
   background-image: url('../images/thoubgaza.jpeg');
   background-size: cover;
   background-position: center;
@@ -115,24 +115,7 @@
   animation: slideFromLeftToRight 5s ease-in-out forwards; 
 }
 
-.text-section {
-  padding: 2rem 4rem;
-  width: 50%;
-  position: absolute;
-  font-size:20px ;
-  bottom: -50%; 
-  animation: slideFromBottomToTop 3s ease-in-out forwards; 
-}
-.text2-section {
-  padding: 2rem 4rem;
-  font-size: large;
-  width: calc(60% - 8rem); 
-  position: absolute;
-  top: 30%; 
-  transform: translateY(-50%);
-  right: 0; 
-  animation: slideFromBottomToTop 3s ease-in-out forwards; 
-}
+
 
 
 .book {
@@ -194,17 +177,6 @@
   transform: rotatey(-80deg);
 }
 
-.desc {
-  font-size: 18px;
-  font-weight: lighter;
-  padding-left: 50px;
-}
-section {
-  position: relative;
-  top: 0px;
-}
-img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
+
+
+
