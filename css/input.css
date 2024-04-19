@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  box-sizing: border-box;
+}
 
 @layer utilities {
   .tap-highlight-transparent {
@@ -115,9 +118,6 @@
   animation: slideFromLeftToRight 5s ease-in-out forwards; 
 }
 
-
-
-
 .book {
   position: relative;
   border-radius: 10px;
@@ -176,7 +176,3 @@
   -ms-transform: rotatey(-80deg);
   transform: rotatey(-80deg);
 }
-
-
-
-
