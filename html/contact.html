@@ -25,7 +25,7 @@
     .stitch-path {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: stitch-draw 3s ease-in-out forwards;
+      animation: stitch-draw 3.5s ease-in-out forwards;
     }
 
     @keyframes stitch-draw {
@@ -41,6 +41,11 @@
       z-index: 0;
       opacity: 0.15;
       pointer-events: none;
+    }
+
+    .form-input-focus:focus {
+      box-shadow: 0 0 15px rgba(153, 27, 27, 0.1);
+      transform: translateY(-1px);
     }
   </style>
   <!-- End - Fonts -->
@@ -101,6 +106,14 @@
               </a>
             </li>
             <li>
+              <a href="designer.html"
+                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                DESIGNER
+                <span
+                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
+            <li>
               <a href="about.html"
                 class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
                 ABOUT
@@ -129,51 +142,81 @@
         <div class="max-w-screen-md bg-white/60 dark:bg-black/40 p-8 rounded-xl backdrop-blur-sm">
           <h1 class="text-3xl pb-2 font-serif font-bold text-tatreez-red">Get in Touch</h1>
 
-          <!-- Stitching Divider -->
-          <div class="mb-8 opacity-30">
-            <svg width="120" height="20" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="stitch-path"
-                d="M0 10 L10 0 L20 20 L30 0 L40 20 L50 0 L60 20 L70 0 L80 20 L90 0 L100 20 L110 0 L120 10"
-                stroke="#991B1B" stroke-width="2" stroke-linecap="round" />
+          <!-- Intricate Stitching Divider -->
+          <div class="mb-10 opacity-40">
+            <svg width="200" height="30" viewBox="0 0 200 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Geometric Tatreez Border -->
+              <path class="stitch-path" d="M0 15 L10 5 L20 15 L10 25 L0 15 Z" stroke="#991B1B" stroke-width="1.5" />
+              <path class="stitch-path" d="M30 15 L40 5 L50 15 L40 25 L30 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 0.3s;" />
+              <path class="stitch-path" d="M60 15 L70 5 L80 15 L70 25 L60 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 0.6s;" />
+              <path class="stitch-path" d="M90 15 L100 5 L110 15 L100 25 L90 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 0.9s;" />
+              <path class="stitch-path" d="M120 15 L130 5 L140 15 L130 25 L120 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 1.2s;" />
+              <path class="stitch-path" d="M150 15 L160 5 L170 15 L160 25 L150 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 1.5s;" />
+              <path class="stitch-path" d="M180 15 L190 5 L200 15 L190 25 L180 15 Z" stroke="#991B1B" stroke-width="1.5"
+                style="animation-delay: 1.8s;" />
+              <!-- Connecting threads -->
+              <path class="stitch-path" d="M10 15 H190" stroke="#556B2F" stroke-width="1" stroke-dasharray="4 4"
+                style="animation-delay: 2s;" />
             </svg>
           </div>
 
-          <form class="space-y-8" action="mailto:info@example.com">
+          <form class="space-y-6" action="mailto:info@example.com">
             <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+              <label for="email"
+                class="block mb-2 text-sm font-semibold text-tatreez-charcoal dark:text-gray-300 uppercase tracking-wider">Your
                 email</label>
               <input type="email" id="email"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-tatreez-red focus:border-tatreez-red block w-full p-2.5 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                class="form-input-focus shadow-sm bg-white/50 border border-tatreez-red/20 text-gray-900 text-sm rounded-lg focus:ring-tatreez-red focus:border-tatreez-red block w-full p-3 dark:bg-black/30 dark:border-white/10 dark:placeholder-gray-500 dark:text-white transition-all duration-300 outline-none"
                 placeholder="example@gmail.com" required />
             </div>
             <div>
               <label for="subject"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+                class="block mb-2 text-sm font-semibold text-tatreez-charcoal dark:text-gray-300 uppercase tracking-wider">Subject</label>
               <input type="text" id="subject"
-                class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-tatreez-red focus:border-tatreez-red dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                class="form-input-focus block p-3 w-full text-sm text-gray-900 bg-white/50 rounded-lg border border-tatreez-red/20 shadow-sm focus:ring-tatreez-red focus:border-tatreez-red dark:bg-black/30 dark:border-white/10 dark:placeholder-gray-500 dark:text-white transition-all duration-300 outline-none"
                 placeholder="Let me know how I can help you" required />
             </div>
             <div class="sm:col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your
+              <label for="message"
+                class="block mb-2 text-sm font-semibold text-tatreez-charcoal dark:text-gray-300 uppercase tracking-wider">Your
                 message</label>
               <textarea id="message" rows="6"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-tatreez-red focus:border-tatreez-red dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                class="form-input-focus block p-3 w-full text-sm text-gray-900 bg-white/50 rounded-lg shadow-sm border border-tatreez-red/20 focus:ring-tatreez-red focus:border-tatreez-red dark:bg-black/30 dark:border-white/10 dark:placeholder-gray-500 dark:text-white transition-all duration-300 outline-none"
                 placeholder="Leave a comment..." required></textarea>
             </div>
             <button type="submit"
-              class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-tatreez-red hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 transition-colors">
+              class="w-full sm:w-auto py-4 px-10 text-sm font-bold text-center text-white rounded-lg bg-tatreez-red hover:bg-tatreez-red/90 focus:ring-4 focus:outline-none focus:ring-tatreez-red/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform active:scale-95 uppercase tracking-widest">
               Send message
             </button>
           </form>
         </div>
       </section>
       <div class="col-span-1 flex relative order-1 lg:order-2 justify-center items-center">
-        <!-- Animated SVG Motif -->
+        <!-- Intricate Animated SVG Motif (Bird & Vine) -->
         <div class="motif-container">
-          <svg width="150" height="300" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="stitch-path"
-              d="M50 10V190M50 10L70 40M50 10L30 40M50 40L80 80M50 40L20 80M50 80L90 130M50 80L10 130M50 130L95 180M50 130L5 180"
-              stroke="#991B1B" stroke-width="2" stroke-linecap="round" />
+          <svg width="250" height="400" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Central Vine -->
+            <path class="stitch-path" d="M50 150 V10" stroke="#556B2F" stroke-width="1.5" />
+            <!-- Symbolic Birds -->
+            <path class="stitch-path" d="M50 100 L70 80 L80 90 L75 105 Z" fill="#991B1B" opacity="0.8"
+              style="animation-delay: 1s;" />
+            <path class="stitch-path" d="M50 100 L30 80 L20 90 L25 105 Z" fill="#991B1B" opacity="0.8"
+              style="animation-delay: 1.2s;" />
+            <!-- Leaves / Petals -->
+            <path class="stitch-path" d="M50 60 L60 50 M50 60 L40 50" stroke="#991B1B" stroke-width="2"
+              style="animation-delay: 1.5s;" />
+            <path class="stitch-path" d="M50 30 L65 15 M50 30 L35 15" stroke="#991B1B" stroke-width="2"
+              style="animation-delay: 1.8s;" />
+            <!-- Cross-stitch accents -->
+            <path class="stitch-path" d="M48 140 L52 144 M52 140 L48 144" stroke="#D4AF37" stroke-width="1"
+              style="animation-delay: 2s;" />
+            <path class="stitch-path" d="M48 120 L52 124 M52 120 L48 124" stroke="#D4AF37" stroke-width="1"
+              style="animation-delay: 2.2s;" />
           </svg>
         </div>
         <div

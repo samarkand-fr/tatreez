@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Design Your Own Motif - An interactive tool to create custom Palestinian Tatreez patterns." />
+    <title>Motif Designer - Tatreez</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind_config.js"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .grid-cell {
+            aspect-ratio: 1;
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
+            cursor: crosshair;
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: bold;
+            user-select: none;
+            position: relative;
+        }
+
+        .dark .grid-cell {
+            border: 0.5px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .grid-cell:hover {
+            background-color: rgba(153, 27, 27, 0.05);
+            z-index: 10;
+        }
+
+        .stitch-x {
+            display: none;
+            pointer-events: none;
+        }
+
+        .grid-cell.active .stitch-x {
+            display: block;
+        }
+
+        .symmetry-line-v {
+            border-right: 2px dashed rgba(153, 27, 27, 0.3) !important;
+        }
+
+        .symmetry-line-h {
+            border-bottom: 2px dashed rgba(153, 27, 27, 0.3) !important;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .sidebar-tab-active {
+            border-bottom: 2px solid #991B1B;
+            color: #991B1B;
+        }
+    </style>
+</head>
+
+<body
+    class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden relative"
+    x-data="{
+        gridSize: 24,
+        cells: Array(576).fill(null),
+        selectedColor: '#991B1B',
+        symmetryMode: 'none',
+        history: [],
+        currentTab: 'palettes',
+        
+        regionalPalettes: {
+            'Hebron': [
+                { name: 'Classic Red', hex: '#991B1B' },
+                { name: 'Deep Black', hex: '#000000' },
+                { name: 'Olive Leaf', hex: '#556B2F' },
+                { name: 'Sand', hex: '#D2B48C' }
+            ],
+            'Gaza': [
+                { name: 'Vibrant Red', hex: '#E63946' },
+                { name: 'Sun Yellow', hex: '#FFD166' },
+                { name: 'Sea Blue', hex: '#118AB2' },
+                { name: 'Warm Orange', hex: '#F77F00' }
+            ],
+            'Jaffa': [
+                { name: 'Indigo', hex: '#3F37C9' },
+                { name: 'Orange Zest', hex: '#FFBC42' },
+                { name: 'Emerald', hex: '#06D6A0' },
+                { name: 'Gold Dust', hex: '#D4AF37' }
+            ]
+        },
+        
+        templates: [
+            { id: 'cypress', name: 'Saru (Cypress)', icon: '🌳', indices: [276, 300, 324, 348, 372, 396, 420, 275, 277, 301, 299, 323, 325, 347, 349] },
+            { id: 'star', name: 'Bethlehem Star', icon: '✨', indices: [252, 276, 300, 324, 275, 277, 301, 299, 274, 278, 302, 298] },
+            { id: 'bird', name: 'Assafir (Birds)', icon: '🕊️', indices: [252, 275, 276, 277, 300, 323, 324, 325] }
+        ],
+
+        isDrawing: false,
+        
+        saveToHistory() {
+            this.history.push(JSON.stringify(this.cells));
+            if (this.history.length > 20) this.history.shift();
+        },
+
+        undo() {
+            if (this.history.length > 0) {
+                this.cells = JSON.parse(this.history.pop());
+            }
+        },
+
+        getSymmetricIndices(index) {
+            let indices = [index];
+            const x = index % this.gridSize;
+            const y = Math.floor(index / this.gridSize);
+
+            if (this.symmetryMode === 'vertical' || this.symmetryMode === 'both') {
+                const mirrorX = this.gridSize - 1 - x;
+                indices.push(y * this.gridSize + mirrorX);
+            }
+            if (this.symmetryMode === 'horizontal' || this.symmetryMode === 'both') {
+                const mirrorY = this.gridSize - 1 - y;
+                indices.push(mirrorY * this.gridSize + x);
+            }
+            if (this.symmetryMode === 'both') {
+                const mirrorX = this.gridSize - 1 - x;
+                const mirrorY = this.gridSize - 1 - y;
+                indices.push(mirrorY * this.gridSize + mirrorX);
+            }
+            return [...new Set(indices)];
+        },
+        
+        toggleCell(index) {
+            this.saveToHistory();
+            const indices = this.getSymmetricIndices(index);
+            const isRemoving = this.cells[index] === this.selectedColor;
+            
+            indices.forEach(idx => {
+                this.cells[idx] = isRemoving ? null : this.selectedColor;
+            });
+        },
+        
+        paintCell(index) {
+            if (this.isDrawing) {
+                const indices = this.getSymmetricIndices(index);
+                indices.forEach(idx => {
+                    this.cells[idx] = this.selectedColor;
+                });
+            }
+        },
+
+        loadTemplate(template) {
+            this.saveToHistory();
+            this.cells = Array(576).fill(null);
+            template.indices.forEach(idx => {
+                this.cells[idx] = this.selectedColor;
+            });
+        },
+        
+        clearGrid() {
+            if (confirm('Clear your design and start over?')) {
+                this.saveToHistory();
+                this.cells = Array(576).fill(null);
+            }
+        },
+        
+        exportSVG() {
+            const size = 500;
+            const cellSize = size / this.gridSize;
+            let paths = '';
+            
+            this.cells.forEach((color, i) => {
+                if (color) {
+                    const x = (i % this.gridSize) * cellSize;
+                    const y = Math.floor(i / this.gridSize) * cellSize;
+                    paths += `<path d='M${x+2},${y+2} L${x+cellSize-2},${y+cellSize-2} M${x+cellSize-2},${y+2} L${x+2},${y+cellSize-2}' stroke='${color}' stroke-width='2' stroke-linecap='round'/>`;
+                }
+            });
+            
+            const svgContent = `<svg width='${size}' height='${size}' viewBox='0 0 ${size} ${size}' xmlns='http://www.w3.org/2000/svg' style='background:#FEFDF5'>${paths}</svg>`;
+            const blob = new Blob([svgContent], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'my-tatreez-motif.svg';
+            link.click();
+        }
+    }" @mousedown="isDrawing = true" @mouseup="isDrawing = false" @mouseleave="isDrawing = false">
+
+    <!-- Keffiyeh Pattern Background -->
+    <div class="fixed inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none z-0"
+        style="background-image: url('../images/keffiyeh-pattern.png'); background-size: 300px;"></div>
+
+    <!-- Header (Inlined) -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300">
+        <nav id="nav" x-data="{ open: false }" role="navigation"
+            class="w-full glass-nav shadow-sm transition-all duration-300">
+            <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
+                <div class="flex-shrink-0">
+                    <a href="../index.html" class="block group">
+                        <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
+                            class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="open = !open"
+                        class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
+                        aria-label="Open main menu">
+                        <div class="w-6 h-6 relative">
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                                :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
+                                :class="{'opacity-0': open } "></span>
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                                :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
+                        </div>
+                    </button>
+                </div>
+                <div id="menu"
+                    :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
+                    class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
+                    <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
+                        <li>
+                            <a href="../index.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                HOME
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="gallery.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                GALLERY
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 md:py-0 text-tatreez-red transition-colors relative group">
+                                DESIGNER
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                ABOUT
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                CONTACT
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="h-24 md:h-28"></div>
+
+    <main class="container mx-auto px-6 py-12 relative z-10">
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-tatreez-red mb-4">Design Your Motif</h1>
+            <p class="text-lg text-tatreez-charcoal dark:text-gray-300 max-w-2xl mx-auto italic">
+                "Preserve the art by creating your own pattern. Each stitch is a thread of history."
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12 items-start justify-center">
+
+            <!-- Controls Sidebar -->
+            <div class="w-full lg:w-80 space-y-6 animate-slide-up order-2 lg:order-1">
+                <div
+                    class="bg-white/80 dark:bg-neutral-900/80 p-0 rounded-2xl shadow-xl backdrop-blur-md border border-white/50 dark:border-white/10 overflow-hidden">
+                    <!-- Sidebar Tabs -->
+                    <div class="flex border-b border-tatreez-red/10">
+                        <button @click="currentTab = 'palettes'"
+                            class="flex-1 py-3 text-xs font-bold uppercase tracking-wider transition-colors hover:text-tatreez-red"
+                            :class="currentTab === 'palettes' ? 'sidebar-tab-active' : 'text-gray-400'">Palettes</button>
+                        <button @click="currentTab = 'templates'"
+                            class="flex-1 py-3 text-xs font-bold uppercase tracking-wider transition-colors hover:text-tatreez-red"
+                            :class="currentTab === 'templates' ? 'sidebar-tab-active' : 'text-gray-400'">Templates</button>
+                        <button @click="currentTab = 'settings'"
+                            class="flex-1 py-3 text-xs font-bold uppercase tracking-wider transition-colors hover:text-tatreez-red"
+                            :class="currentTab === 'settings' ? 'sidebar-tab-active' : 'text-gray-400'">Settings</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="p-6">
+                        <!-- Palettes Tab -->
+                        <div x-show="currentTab === 'palettes'" class="space-y-6">
+                            <template x-for="(colors, region) in regionalPalettes" :key="region">
+                                <div>
+                                    <h4 class="text-xs font-bold text-tatreez-red uppercase mb-3" x-text="region"></h4>
+                                    <div class="grid grid-cols-4 gap-2">
+                                        <template x-for="color in colors" :key="color.hex">
+                                            <button @click="selectedColor = color.hex" class="group relative"
+                                                :title="color.name">
+                                                <div class="w-full aspect-square rounded-lg shadow-sm border border-black/5 dark:border-white/5 transition-transform"
+                                                    :class="selectedColor === color.hex ? 'scale-110 ring-2 ring-tatreez-red' : 'hover:scale-105'"
+                                                    :style="'background-color: ' + color.hex"></div>
+                                            </button>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Templates Tab -->
+                        <div x-show="currentTab === 'templates'" class="grid grid-cols-1 gap-3">
+                            <template x-for="item in templates" :key="item.id">
+                                <button @click="loadTemplate(item)"
+                                    class="flex items-center gap-4 p-3 rounded-xl border border-tatreez-red/10 hover:bg-tatreez-red/5 transition-colors text-left group">
+                                    <span class="text-2xl" x-text="item.icon"></span>
+                                    <div>
+                                        <p class="font-bold text-sm" x-text="item.name"></p>
+                                        <p class="text-[10px] text-gray-500 uppercase">Click to apply</p>
+                                    </div>
+                                    <i
+                                        class="fas fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </button>
+                            </template>
+                        </div>
+
+                        <!-- Settings Tab -->
+                        <div x-show="currentTab === 'settings'" class="space-y-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-tatreez-red uppercase mb-4">Symmetry Mode</h4>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button @click="symmetryMode = 'none'"
+                                        class="py-2 px-3 text-[10px] font-bold uppercase rounded-lg border transition-colors"
+                                        :class="symmetryMode === 'none' ? 'bg-tatreez-red text-white border-tatreez-red' : 'border-gray-200 dark:border-neutral-700'">None</button>
+                                    <button @click="symmetryMode = 'vertical'"
+                                        class="py-2 px-3 text-[10px] font-bold uppercase rounded-lg border transition-colors"
+                                        :class="symmetryMode === 'vertical' ? 'bg-tatreez-red text-white border-tatreez-red' : 'border-gray-200 dark:border-neutral-700'">Vertical</button>
+                                    <button @click="symmetryMode = 'horizontal'"
+                                        class="py-2 px-3 text-[10px] font-bold uppercase rounded-lg border transition-colors"
+                                        :class="symmetryMode === 'horizontal' ? 'bg-tatreez-red text-white border-tatreez-red' : 'border-gray-200 dark:border-neutral-700'">Horizontal</button>
+                                    <button @click="symmetryMode = 'both'"
+                                        class="py-2 px-3 text-[10px] font-bold uppercase rounded-lg border transition-colors"
+                                        :class="symmetryMode === 'both' ? 'bg-tatreez-red text-white border-tatreez-red' : 'border-gray-200 dark:border-neutral-700'">Both</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-3">
+                    <button @click="undo"
+                        class="flex-1 py-3 bg-white dark:bg-neutral-800 rounded-xl shadow-sm border border-gray-200 dark:border-neutral-700 flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
+                        :disabled="history.length === 0" :class="history.length === 0 ? 'opacity-50 grayscale' : ''">
+                        <i class="fas fa-undo"></i> <span class="text-xs font-bold uppercase">Undo</span>
+                    </button>
+                    <button @click="clearGrid"
+                        class="flex-1 py-3 bg-white dark:bg-neutral-800 rounded-xl shadow-sm border border-gray-200 dark:border-neutral-700 flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors">
+                        <i class="fas fa-trash-alt"></i> <span class="text-xs font-bold uppercase">Clear</span>
+                    </button>
+                </div>
+
+                <button @click="exportSVG"
+                    class="w-full py-4 bg-tatreez-red text-white flex items-center justify-center gap-2 rounded-xl font-bold hover:bg-red-800 transition-all shadow-lg hover:shadow-red-900/20 hover:-translate-y-0.5">
+                    <i class="fas fa-file-export"></i> <span>EXPORT DESIGN (SVG)</span>
+                </button>
+            </div>
+
+            <!-- Drawing Grid -->
+            <div
+                class="flex-grow max-w-[600px] aspect-square bg-white dark:bg-neutral-900 rounded-xl shadow-2xl p-6 border border-tatreez-red/10 animate-fade-in order-1 lg:order-2">
+                <div class="grid h-full border border-gray-100 dark:border-neutral-800"
+                    :style="'grid-template-columns: repeat(' + gridSize + ', 1fr)'">
+                    <template x-for="(cell, index) in cells" :key="index">
+                        <div class="grid-cell" :class="{
+                                'active': cells[index],
+                                'symmetry-line-v': (symmetryMode === 'vertical' || symmetryMode === 'both') && (index % gridSize === (gridSize/2 - 1)),
+                                'symmetry-line-h': (symmetryMode === 'horizontal' || symmetryMode === 'both') && (Math.floor(index/gridSize) === (gridSize/2 - 1))
+                            }"
+                            :style="cells[index] ? 'background-color: ' + cells[index] + '15; color: ' + cells[index] : ''"
+                            @mousedown="toggleCell(index)" @mouseover="paintCell(index)">
+                            <span class="stitch-x" :style="'color: ' + cells[index]">X</span>
+                            <!-- Coordinate markers for center -->
+                            <template x-if="index === 0">
+                                <div class="absolute -top-6 left-0 text-[10px] text-gray-400 font-bold">0,0</div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div
+                    class="mt-4 flex justify-between items-center text-[10px] text-gray-500 font-bold uppercase tracking-widest px-1">
+                    <span>24x24 AIDA GRID</span>
+                    <span x-text="symmetryMode !== 'none' ? 'Symmetry: ' + symmetryMode : ''"></span>
+                    <div class="flex items-center gap-1.5">
+                        <span>Color:</span>
+                        <div class="w-3.5 h-3.5 rounded shadow-inner border border-black/10 dark:border-white/10"
+                            :style="'background-color: ' + selectedColor"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer (Inlined) -->
+    <footer
+        class="bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300 relative z-10">
+        <div class="max-w-screen-xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
+                    <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
+                        Preserving the thread of Palestinian identity.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+            <div
+                class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+                <p>&copy; 2026 Tatreez. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed by <a href="#"
+                        class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/fade_in.js"></script>
+</body>
+
+</html>
