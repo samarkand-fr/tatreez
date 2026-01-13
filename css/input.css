@@ -1,9 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global Styles */
+:root {
+  --color-primary: #991B1B;
+  --color-accent: #D4AF37;
+  --color-bg-light: #FEFDF5;
+  --color-bg-dark: #1A1A1A;
+}
 
-*{
-  box-sizing: border-box;
+body {
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
 }
 
 @layer utilities {
@@ -13,40 +18,96 @@
 
   .smooth-edges {
     -webkit-backface-visibility: hidden;
-    backface-visibility:hidden;
+    backface-visibility: hidden;
   }
-  .font-signika {
-    font-family: 'Signika', sans-serif;
+
+  .glass-nav {
+    background: rgba(254, 253, 245, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  .font-nothing-you-could-do {
-    font-family: 'Nothing You Could Do', sans-serif;
+
+  .dark .glass-nav {
+    background: rgba(26, 26, 26, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
-  
+
+  .bg-pattern-keffiyeh {
+    position: relative;
+    background-color: var(--color-bg-light);
+  }
+
+  .dark .bg-pattern-keffiyeh {
+    background-color: var(--color-bg-dark);
+  }
+
+  .bg-pattern-keffiyeh::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/keffiyeh-pattern.png');
+    background-repeat: repeat;
+    background-size: 400px;
+    opacity: 0.03;
+    /* Very subtle */
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .dark .bg-pattern-keffiyeh::before {
+    opacity: 0.05;
+    filter: invert(1);
+  }
+}
+
+/* Animations */
+.animate-wave {
+  animation: wave 2.5s infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(14deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 
-  .animate-wave {
-    animation-name: wave;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    transform-origin: 70% 70%;
-    display: inline-block;
-  }
-  
-  @keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
-  }
-  
-
-  #ulMenu li:hover span {
-    background-color: red; 
+#ulMenu li:hover span {
+  background-color: red;
 }
 
 .card {
@@ -59,6 +120,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -81,41 +143,58 @@
 .card:nth-child(4) {
   animation-delay: 1.2s;
 }
+
 .card:nth-child(5) {
   animation-delay: 1.6s;
 }
+
 .card:nth-child(6) {
   animation-delay: 2.0s;
 }
 
 
 
-  
+
 
 @keyframes slideFromLeftToRight {
-  0% { left: -50%;
-  opacity:0.2 } 
-  70% { left: 70%;
-  opacity:.5 } 
-  100% { left: 50%; } 
+  0% {
+    left: -50%;
+    opacity: 0.2
+  }
+
+  70% {
+    left: 70%;
+    opacity: .5
+  }
+
+  100% {
+    left: 50%;
+  }
 }
 
 @keyframes slideFromBottomToTop {
-  0% { bottom: 0%; } 
-  100% { bottom: 30%; } 
+  0% {
+    bottom: 0%;
+  }
+
+  100% {
+    bottom: 30%;
+  }
 }
+
 .animate-slide-from-bottom-to-top {
   animation-name: slideFromBottomToTop;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
+
 .bg-image {
   background-image: url('../images/thoubgaza.jpeg');
   background-size: cover;
   background-position: center;
   z-index: -1;
-  animation: slideFromLeftToRight 5s ease-in-out forwards; 
+  animation: slideFromLeftToRight 5s ease-in-out forwards;
 }
 
 .book {

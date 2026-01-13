@@ -1,100 +1,73 @@
-<header class="flex w-full overflow-hidden pt-10 pb-1">
-  <!-- Navbar -->
-  <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
-    <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+<header class="fixed w-full top-0 z-50 transition-all duration-300">
+  <nav id="nav" x-data="{ open: false }" role="navigation"
+    class="w-full glass-nav shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
       <!-- Logo -->
-      <div class="mr-2 sm:mr-3 md:mr-4 lg:mr-8">
-        <a href="../index.html" class="block">
-          <img
-            src="../images/logo-tatreez.png"
-            alt="TATREEZ Logo"
-            class="w-20 h-auto sm:w-24 md:w-28 lg:w-32 xl:w-36"
-          />
+      <div class="flex-shrink-0">
+        <a href="../index.html" class="block group">
+          <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
+            class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
         </a>
       </div>
 
       <!-- Hamburger menu button -->
-      <div class="ml-auto md:hidden flex items-center justify-start">
-        <button
-          @click="open = !open"
-          class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
-        >
-          <span class="sr-only">Open main menu</span>
-          <div
-            class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <span
-              aria-hidden="true"
-              class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              :class="{'rotate-45': open, '-translate-y-1.5': !open }"
-            ></span>
-            <span
-              aria-hidden="true"
-              class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              :class="{'opacity-0': open } "
-            ></span>
-            <span
-              aria-hidden="true"
-              class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              :class="{'-rotate-45': open, 'translate-y-1.5': !open}"
-            ></span>
+      <div class="md:hidden">
+        <button @click="open = !open"
+          class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
+          aria-label="Open main menu">
+          <div class="w-6 h-6 relative">
+            <span aria-hidden="true"
+              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+              :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
+            <span aria-hidden="true"
+              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
+              :class="{'opacity-0': open } "></span>
+            <span aria-hidden="true"
+              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+              :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
           </div>
         </button>
       </div>
 
       <!-- Navigation menu -->
-      <div
-        id="menu"
-        :class="{'hidden': !open}"
-        class="w-full md:w-auto md:flex-grow md:flex md:items-center"
-      >
-        <ul
-          id="ulMenu"
-          class="flex flex-col md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0"
-        >
-          <li class="group transition duration-300">
-            <a
-              href="../index.html"
-              class="font-signika text-2xl tap-highlight-transparent"
-              >HOME</a
-            >
-            <span
-              class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"
-            ></span>
+      <div id="menu" :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
+        class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
+        <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
+          <li>
+            <a href="../index.html"
+              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+              HOME
+              <span
+                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
           </li>
-          <li class="group transition duration-300">
-            <a
-              href="../html/gallery.html"
-              class="font-signika text-2xl tap-highlight-transparent"
-              >GALLERY</a
-            >
-            <span
-              class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"
-            ></span>
+          <li>
+            <a href="../html/gallery.html"
+              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+              GALLERY
+              <span
+                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
           </li>
-
-          <li class="group transition duration-300">
-            <a
-              href="../html/about.html"
-              class="font-signika text-2xl tap-highlight-transparent"
-              >ABOUT</a
-            >
-            <span
-              class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"
-            ></span>
+          <li>
+            <a href="../html/about.html"
+              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+              ABOUT
+              <span
+                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
           </li>
-          <li class="group transition duration-300">
-            <a
-              href="../html/contact.html"
-              class="font-signika text-2xl tap-highlight-transparent"
-              >CONTACT</a
-            >
-            <span
-              class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"
-            ></span>
+          <li>
+            <a href="../html/contact.html"
+              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+              CONTACT
+              <span
+                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
+<div class="h-24 md:h-28"></div> <!-- Spacer for fixed header -->

@@ -1,202 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-        name="description"
-        content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine."
-    />
-    <title>Palestinian Embroidery - Tatreez</title>
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        rel="stylesheet"
-    />
-    <link
-        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-        rel="stylesheet"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap"
-        rel="stylesheet"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
-        rel="stylesheet"
-    />
-    <link
-        rel="icon"
-        type="image/x-icon"
-        href="./assets/images/logo-tatreez.png"
-    />
+    <meta name="description"
+        content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
+    <title>Palestinian Embroidery - Tatreez History</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../images/logo-tatreez.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind_config.js"></script>
 
-    <link rel="stylesheet" href="../css/input.css" />
     <!-- Alpine.js -->
-    <script
-        defer
-        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <!-- Start - Fonts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
-        rel="stylesheet"
-    />
-    <script
-        src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-        crossorigin="anonymous"
-    ></script>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-            margin: 20px;
-            opacity: 0;
-            padding: 20px;
-            transform: translateY(20px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        .stitch-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: stitch-draw 3s ease-in-out forwards;
         }
-        .content {
-            width: 45%;
-            padding: 20px;
-        }
-        .image {
-            width: 35%;
-            max-height: 400px;
-            overflow: hidden;
+
+        @keyframes stitch-draw {
+            to {
+                stroke-dashoffset: 0;
+            }
         }
     </style>
 </head>
+
 <body
-    class="bg-gray-100 p-4 dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 mt-16"
->
-<!-- Icon to return to homepage -->
-<a href="../index.html" class="fixed top-0 left-10 p-4 text-red-500">
-    <i class="fas fa-home text-3xl"></i>
-</a>
+    class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden relative">
+    <!-- Keffiyeh Pattern Background -->
+    <div class="fixed inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none z-0"
+        style="background-image: url('../images/keffiyeh-pattern.png'); background-size: 300px;"></div>
 
-<div class="container" id="container1">
-    <div class="image w-full md:w-5/12 order-1 md:order-1">
-        <img src="../images/tatrize4.jpeg" alt="Image 1" />
-    </div>
-    <div class="content w-full md:w-5/12 mt-8 md:mt-0 order-2 md:order-2">
-        <p class="text-sm md:text-lg">
-            Palestinian Tatreez is a beautiful and ancient form of embroidery that
-            has been practiced for centuries by Palestinian women.
-        </p>
-        <p class="text-sm md:text-lg">
-            The intricate geometric patterns and vibrant colors are not just
-            decorative; they tell stories about the wearer's family, village, and
-            heritage.
-        </p>
-    </div>
-</div>
+    <!-- Navbar (Inlined) -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300">
+        <nav id="nav" x-data="{ open: false }" role="navigation"
+            class="w-full glass-nav shadow-sm transition-all duration-300">
+            <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
+                <div class="flex-shrink-0">
+                    <a href="../index.html" class="block group">
+                        <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
+                            class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="open = !open"
+                        class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
+                        aria-label="Open main menu">
+                        <div class="w-6 h-6 relative">
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                                :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
+                                :class="{'opacity-0': open } "></span>
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                                :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
+                        </div>
+                    </button>
+                </div>
+                <div id="menu"
+                    :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
+                    class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
+                    <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
+                        <li>
+                            <a href="../index.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                HOME
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="gallery.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                GALLERY
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                ABOUT
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html"
+                                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                                CONTACT
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="container" id="container2">
-    <div class="image w-full md:w-5/12 order-1 md:order-2">
-        <img src="../images/tatrize5.jpeg" alt="Image 2" />
-    </div>
-    <div class="content w-full md:w-5/12 mt-8 md:mt-0 order-2 md:order-1">
-        <p class="text-sm md:text-lg">
-            The colors and patterns used in Tatreez can vary depending on the
-            region of Palestine where it is made. For example, embroidery from the
-            southern region often features bold colors like red, green, and black,
-            while embroidery from the north is more likely to use softer colors
-            like blue and yellow.
-        </p>
-    </div>
-</div>
-<div class="container" id="container3">
-    <div class="image w-full md:w-5/12 order-1 md:order-2">
-        <img src="../images/tatrize8.jpeg" alt="Image 1" />
-    </div>
-    <div class="content w-full md:w-5/12 mt-8 md:mt-0 order-1 md:order-2">
-        <p class="text-sm md:text-lg">
-            Traditionally, Tatreez was used to decorate clothing, such as dresses,
-            thobes (long, loose gowns), and headscarves. However, today you can
-            also find Tatreez on a variety of other items, such as wall hangings,
-            pillowcases, and handbags.
-        </p>
-    </div>
-</div>
-<div class="container" id="container4">
-    <div class="image w-full md:w-5/12 order-1 md:order-2">
-        <img src="../images/tatrize2.jpeg" alt="Image 2" />
-    </div>
-    <div class="content w-full md:w-5/12 mt-8 md:mt-0 order-2 md:order-1">
-        <p class="text-sm md:text-lg">
-            As an art form that has been taught and passed down throughout
-            generations, tatreez requires a dedicated amount of skill and
-            patience, not only in technique but in the deep and personal meaning
-            of each and every stitch.
-        </p>
-        <p class="text-sm md:text-lg">
-            Some complex designs can take over a year to complete from start to
-            finish.
-        </p>
-    </div>
-</div>
-<div class="container" id="container5">
-    <div class="image w-full md:w-5/12 order-1 md:order-1">
-        <img src="../images/tatrize1.jpeg" alt="Image 1" />
-    </div>
-    <div class="content w-full md:w-5/12 mt-8 md:mt-0 order-2 md:order-2">
-        <p class="text-sm md:text-lg">
-            Tatreez stands resilient, embodying the essence of Palestinian
-            heritage. It serves as a proud symbol of cultural identity, faithfully
-            transmitted through generations. Yet, it also serves as a bittersweet
-            emblem of longing for home among the displaced.
-        </p>
-        <p class="text-sm md:text-lg mt-5">
-            With every intricate stitch, Tatreez weaves together threads of the
-            past and present, transforming each piece into more than just artwork.
-            It becomes a tangible marker of history, an economic asset, a
-            testament to enduring presence, and a powerful political statement.
-        </p>
-        <p class="text-sm md:text-lg mt-5">
-            In the narrative of Palestine's living history, Tatreez occupies a
-            profound and all-encompassing chapter.
-        </p>
-    </div>
-</div>
+    <main class="container mx-auto px-6 pt-32 pb-12">
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-center text-tatreez-red mb-16 animate-fade-in">
+            A Legacy Stitched in Time
+        </h1>
 
-<footer id="footer"></footer>
-<script>
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.5,
-    };
+        <!-- Section 1 -->
+        <div
+            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            <div
+                class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                <img src="../images/tatrize4.jpeg" alt="Palestinian Tatreez Detail"
+                    class="w-full h-64 md:h-80 object-cover" />
+            </div>
+            <div class="w-full md:w-2/3 space-y-6">
+                <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Ancient Roots</h2>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    Palestinian Tatreez is a beautiful and ancient form of embroidery that
+                    has been practiced for centuries by Palestinian women.
+                </p>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    The intricate geometric patterns and vibrant colors are not just
+                    decorative; they tell stories about the wearer's family, village, and
+                    heritage.
+                </p>
+            </div>
+        </div>
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    }, options);
+        <!-- Stitching Divider -->
+        <div class="flex justify-center my-12 opacity-30">
+            <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="stitch-path" d="M10 20 L30 10 L50 30 L70 10 L90 30 L110 10 L130 30 L150 10 L170 30 L190 20"
+                    stroke="#991B1B" stroke-width="2" stroke-linecap="round" />
+                <path class="stitch-path" d="M30 10 L35 15 M25 10 L30 15" stroke="#556B2F" stroke-width="1"
+                    style="animation-delay: 1s;" />
+            </svg>
+        </div>
 
-    const containers = document.querySelectorAll(".container");
-    containers.forEach((container) => {
-        observer.observe(container);
-    });
-</script>
-<!-- Footer -->
-<script src="../js/utils.js"></script>
-<footer id="footer"></footer>
-<script>
-    // Load the footer content
-    loadContent("footer", "footer.html");
-</script>
-<script src="../js/fade_in.js"></script>
-<script src="../js/menu.js"></script>
+        <!-- Section 2 -->
+        <div
+            class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            <div
+                class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                <img src="../images/tatrize5.jpeg" alt="Regional Variations" class="w-full h-64 md:h-80 object-cover" />
+            </div>
+            <div class="w-full md:w-2/3 space-y-6">
+                <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Language of Color</h2>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    The colors and patterns used in Tatreez can vary depending on the
+                    region of Palestine where it is made. For example, embroidery from the
+                    southern region often features bold colors like red, green, and black,
+                    while embroidery from the north is more likely to use softer colors
+                    like blue and yellow.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div
+            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            <div
+                class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                <img src="../images/tatrize8.jpeg" alt="Modern Tatreez" class="w-full h-64 md:h-80 object-cover" />
+            </div>
+            <div class="w-full md:w-2/3 space-y-6">
+                <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Versatile Art</h2>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    Traditionally, Tatreez was used to decorate clothing, such as dresses,
+                    thobes (long, loose gowns), and headscarves. However, today you can
+                    also find Tatreez on a variety of other items, such as wall hangings,
+                    pillowcases, and handbags.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div
+            class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            <div
+                class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                <img src="../images/tatrize2.jpeg" alt="Detailed Stitching" class="w-full h-64 md:h-80 object-cover" />
+            </div>
+            <div class="w-full md:w-2/3 space-y-6">
+                <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Patience & Mastery</h2>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    As an art form that has been taught and passed down throughout
+                    generations, tatreez requires a dedicated amount of skill and
+                    patience, not only in technique but in the deep and personal meaning
+                    of each and every stitch.
+                </p>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    Some complex designs can take over a year to complete from start to
+                    finish.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div
+            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            <div
+                class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                <img src="../images/tatrize1.jpeg" alt="Resilience" class="w-full h-64 md:h-80 object-cover" />
+            </div>
+            <div class="w-full md:w-2/3 space-y-6">
+                <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Symbol of Identity</h2>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    Tatreez stands resilient, embodying the essence of Palestinian
+                    heritage. It serves as a proud symbol of cultural identity, faithfully
+                    transmitted through generations. Yet, it also serves as a bittersweet
+                    emblem of longing for home among the displaced.
+                </p>
+                <p class="text-lg leading-relaxed dark:text-gray-300">
+                    With every intricate stitch, Tatreez weaves together threads of the
+                    past and present, transforming each piece into more than just artwork.
+                    It becomes a tangible marker of history, an economic asset, a
+                    testament to enduring presence, and a powerful political statement.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer (Inlined) -->
+    <footer
+        class="relative z-10 bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300">
+        <div class="max-w-screen-xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
+                    <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
+                        Preserving the thread of Palestinian identity.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+                            class="fab fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+            <div
+                class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+                <p>&copy; 2026 Tatreez. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed by <a href="#"
+                        class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/utils.js"></script>
+    <script>
+        // No loadContent calls needed
+    </script>
+    <script src="../js/fade_in.js"></script>
 </body>
+
 </html>

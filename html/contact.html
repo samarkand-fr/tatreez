@@ -1,126 +1,229 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Palestinian Embroidery - Tatreez - Contact</title>
-    <meta
-      name="description"
-      content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine."
-    />
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./images/logo-tatreez" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
 
-    <link rel="stylesheet" href="../css/input.css" />
-    <!-- Alpine.js -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <!-- Start - Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- End - Fonts -->
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palestinian Embroidery - Tatreez - Contact</title>
+  <meta name="description"
+    content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../images/logo-tatreez.png" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-  <body
-    class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500"
-  >
-    <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Content -->
-    <div class="container mx-auto">
-      <div class="grid grid-cols-2 gap-16">
-        <section class="col-span-2 md:col-span-1">
-          <div class="max-w-screen-md">
-            <h1 class="text-2xl pt-10 pb-8 font-light font-signika">Get in Touch</h1>
+  <link rel="stylesheet" href="../css/input.css" />
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Start - Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind_config.js"></script>
+  <style>
+    .stitch-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: stitch-draw 3s ease-in-out forwards;
+    }
 
-            <form class="space-y-8" action="mailto:info@example.com">
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Your email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                  placeholder="example@gmail.com"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  for="subject"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Subject</label
-                >
-                <input
-                  type="text"
-                  id="subject"
-                  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                  placeholder="Let me know how I can help you"
-                  required
-                />
-              </div>
-              <div class="sm:col-span-2">
-                <label
-                  for="message"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-                  >Your message</label
-                >
-                <textarea
-                  id="message"
-                  rows="6"
-                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Leave a comment..."
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="py-3 px-5 text-sm font-medium text-center bg-black dark:bg-white text-white dark:text-black rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >
-                Send message
-              </button>
-            </form>
+    @keyframes stitch-draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .motif-container {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: 0;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  </style>
+  <!-- End - Fonts -->
+</head>
+
+<body
+  class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal bg-pattern-keffiyeh min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden">
+  <!-- Navbar (Inlined) -->
+  <header class="fixed w-full top-0 z-50 transition-all duration-300">
+    <nav id="nav" x-data="{ open: false }" role="navigation"
+      class="w-full glass-nav shadow-sm transition-all duration-300">
+      <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="../index.html" class="block group">
+            <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
+              class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
+          </a>
+        </div>
+
+        <!-- Hamburger menu button -->
+        <div class="md:hidden">
+          <button @click="open = !open"
+            class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
+            aria-label="Open main menu">
+            <div class="w-6 h-6 relative">
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
+                :class="{'opacity-0': open } "></span>
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
+                :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Navigation menu -->
+        <div id="menu" :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
+          class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
+          <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
+            <li>
+              <a href="../index.html"
+                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                HOME
+                <span
+                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
+            <li>
+              <a href="gallery.html"
+                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                GALLERY
+                <span
+                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
+            <li>
+              <a href="about.html"
+                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                ABOUT
+                <span
+                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
+            <li>
+              <a href="contact.html"
+                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
+                CONTACT
+                <span
+                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-6 pt-24 pb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section class="order-2 lg:order-1">
+        <div class="max-w-screen-md bg-white/60 dark:bg-black/40 p-8 rounded-xl backdrop-blur-sm">
+          <h1 class="text-3xl pb-2 font-serif font-bold text-tatreez-red">Get in Touch</h1>
+
+          <!-- Stitching Divider -->
+          <div class="mb-8 opacity-30">
+            <svg width="120" height="20" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="stitch-path"
+                d="M0 10 L10 0 L20 20 L30 0 L40 20 L50 0 L60 20 L70 0 L80 20 L90 0 L100 20 L110 0 L120 10"
+                stroke="#991B1B" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </div>
-        </section>
-        <div class="col-span-2 md:col-span-1 flex relative">
-          <div
-            class="bg-white dark:bg-neutral-900 p-5 pb-20 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 rotate-6 relative"
-          >
-            <img
-              src="../images/thoub7.jpeg"
-              alt=""
-              class="flex flex-col aspect-square w-full object-cover h-auto max-h-full"
-            />
+
+          <form class="space-y-8" action="mailto:info@example.com">
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+                email</label>
+              <input type="email" id="email"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-tatreez-red focus:border-tatreez-red block w-full p-2.5 dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                placeholder="example@gmail.com" required />
+            </div>
+            <div>
+              <label for="subject"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+              <input type="text" id="subject"
+                class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-tatreez-red focus:border-tatreez-red dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                placeholder="Let me know how I can help you" required />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your
+                message</label>
+              <textarea id="message" rows="6"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-tatreez-red focus:border-tatreez-red dark:bg-neutral-900 dark:border-neutral-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-tatreez-red dark:focus:border-tatreez-red"
+                placeholder="Leave a comment..." required></textarea>
+            </div>
+            <button type="submit"
+              class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-tatreez-red hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 transition-colors">
+              Send message
+            </button>
+          </form>
+        </div>
+      </section>
+      <div class="col-span-1 flex relative order-1 lg:order-2 justify-center items-center">
+        <!-- Animated SVG Motif -->
+        <div class="motif-container">
+          <svg width="150" height="300" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="stitch-path"
+              d="M50 10V190M50 10L70 40M50 10L30 40M50 40L80 80M50 40L20 80M50 80L90 130M50 80L10 130M50 130L95 180M50 130L5 180"
+              stroke="#991B1B" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div
+          class="bg-white dark:bg-neutral-900 p-5 pb-20 m-6 shadow-xl border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 rotate-3 relative w-full max-w-md">
+          <img src="../images/thoub7.jpeg" alt="Contact Us"
+            class="flex flex-col aspect-square w-full object-cover h-auto max-h-full p-2 border border-dashed border-gray-300 dark:border-gray-700" />
+          <div class="absolute bottom-4 left-0 right-0 text-center">
+            <p class="font-nothing-you-could-do text-2xl text-tatreez-charcoal dark:text-gray-300">We'd love to hear
+              from you</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- Footer -->
-    <script src="../js/utils.js"></script>
-    <footer id="footer"></footer>
-    <script>
-      // Load the header content
-      loadContent("header", "header.html");
+  </div>
 
-      // Load the footer content
-      loadContent("footer", "footer.html");
-    </script>
-    <script src="../js/fade_in.js"></script>
-    <script src="../js/menu.js"></script>
-  </body>
+  <!-- Footer (Inlined) -->
+  <footer
+    class="bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300">
+    <div class="max-w-screen-xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+        <div class="mb-4 md:mb-0">
+          <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
+          <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
+            Preserving the thread of Palestinian identity.
+          </p>
+        </div>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+              class="fab fa-facebook text-xl"></i></a>
+          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+              class="fab fa-instagram text-xl"></i></a>
+          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
+              class="fab fa-twitter text-xl"></i></a>
+        </div>
+      </div>
+      <div
+        class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+        <p>&copy; 2026 Tatreez. All rights reserved.</p>
+        <p class="mt-2 md:mt-0">Designed by <a href="#"
+            class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script>
+    // No loadContent calls needed
+  </script>
+  <script src="../js/fade_in.js"></script>
+  <script src="../js/menu.js"></script>
+</body>
+
 </html>
