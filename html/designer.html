@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Design Your Own Motif - An interactive tool to create custom Palestinian Tatreez patterns." />
-    <title>Motif Designer - Tatreez</title>
+    <title>Tatreez Motif Studio | Create a Palestinian Embroidery Pattern</title>
+    <link rel="stylesheet" href="../css/input.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/tailwind_config.js"></script>
@@ -22,10 +23,13 @@
         rel="stylesheet">
 
     <style>
+        .designer-shell { max-width: 1180px; margin-inline: auto; }
+
         .grid-cell {
             aspect-ratio: 1;
             border: 0.5px solid rgba(0, 0, 0, 0.05);
             cursor: crosshair;
+            touch-action: none;
             transition: all 0.1s ease;
             display: flex;
             align-items: center;
@@ -38,6 +42,12 @@
 
         .dark .grid-cell {
             border: 0.5px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .grid-cell:focus-visible {
+            outline: 2px solid #D4AF37;
+            outline-offset: -2px;
+            z-index: 20;
         }
 
         .grid-cell:hover {
@@ -64,6 +74,11 @@
 
         [x-cloak] {
             display: none !important;
+        }
+
+        @media (max-width: 640px) {
+            .designer-grid-card { padding: 0.65rem; }
+            .grid-cell { font-size: 6px; }
         }
 
         .sidebar-tab-active {
@@ -111,6 +126,7 @@
         ],
 
         isDrawing: false,
+        lastPainted: null,
         
         saveToHistory() {
             this.history.push(JSON.stringify(this.cells));
@@ -148,19 +164,24 @@
             this.saveToHistory();
             const indices = this.getSymmetricIndices(index);
             const isRemoving = this.cells[index] === this.selectedColor;
-            
             indices.forEach(idx => {
                 this.cells[idx] = isRemoving ? null : this.selectedColor;
             });
         },
-        
+
+        startStroke(index) {
+            this.saveToHistory();
+            this.isDrawing = true;
+            this.lastPainted = null;
+            this.paintCell(index);
+        },
+
         paintCell(index) {
-            if (this.isDrawing) {
-                const indices = this.getSymmetricIndices(index);
-                indices.forEach(idx => {
-                    this.cells[idx] = this.selectedColor;
-                });
-            }
+            if (!this.isDrawing || this.lastPainted === index) return;
+            this.lastPainted = index;
+            this.getSymmetricIndices(index).forEach(idx => {
+                this.cells[idx] = this.selectedColor;
+            });
         },
 
         loadTemplate(template) {
@@ -198,8 +219,9 @@
             link.href = url;
             link.download = 'my-tatreez-motif.svg';
             link.click();
+            URL.revokeObjectURL(url);
         }
-    }" @mousedown="isDrawing = true" @mouseup="isDrawing = false" @mouseleave="isDrawing = false">
+    }" @pointerup.window="isDrawing = false" @pointercancel.window="isDrawing = false">
 
     <!-- Keffiyeh Pattern Background -->
     <div class="fixed inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none z-0"
@@ -283,18 +305,19 @@
     </header>
     <div class="h-24 md:h-28"></div>
 
-    <main class="container mx-auto px-6 py-12 relative z-10">
-        <div class="text-center mb-12 animate-fade-in">
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-tatreez-red mb-4">Design Your Motif</h1>
-            <p class="text-lg text-tatreez-charcoal dark:text-gray-300 max-w-2xl mx-auto italic">
-                "Preserve the art by creating your own pattern. Each stitch is a thread of history."
+    <main class="designer-shell px-4 sm:px-6 pt-32 pb-16 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-10 animate-fade-in">
+            <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-tatreez-olive font-semibold mb-3">A creative space inspired by heritage</p>
+            <h1 class="text-4xl sm:text-5xl font-serif font-bold text-tatreez-red mb-4">Design Your Motif</h1>
+            <p class="text-base sm:text-lg text-tatreez-charcoal dark:text-gray-300 leading-relaxed">
+                Create a pattern stitch by stitch. Choose a palette, explore a motif template and experiment with symmetry.
             </p>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-12 items-start justify-center">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start justify-center">
 
             <!-- Controls Sidebar -->
-            <div class="w-full lg:w-80 space-y-6 animate-slide-up order-2 lg:order-1">
+            <div class="w-full lg:w-80 lg:flex-shrink-0 space-y-5 animate-slide-up order-2 lg:order-1">
                 <div
                     class="bg-white/80 dark:bg-neutral-900/80 p-0 rounded-2xl shadow-xl backdrop-blur-md border border-white/50 dark:border-white/10 overflow-hidden">
                     <!-- Sidebar Tabs -->
@@ -313,7 +336,7 @@
                     <!-- Tab Content -->
                     <div class="p-6">
                         <!-- Palettes Tab -->
-                        <div x-show="currentTab === 'palettes'" class="space-y-6">
+                        <div x-show="currentTab === 'palettes'" x-cloak class="space-y-6">
                             <template x-for="(colors, region) in regionalPalettes" :key="region">
                                 <div>
                                     <h4 class="text-xs font-bold text-tatreez-red uppercase mb-3" x-text="region"></h4>
@@ -332,11 +355,11 @@
                         </div>
 
                         <!-- Templates Tab -->
-                        <div x-show="currentTab === 'templates'" class="grid grid-cols-1 gap-3">
+                        <div x-show="currentTab === 'templates'" x-cloak class="grid grid-cols-1 gap-3">
                             <template x-for="item in templates" :key="item.id">
                                 <button @click="loadTemplate(item)"
                                     class="flex items-center gap-4 p-3 rounded-xl border border-tatreez-red/10 hover:bg-tatreez-red/5 transition-colors text-left group">
-                                    <span class="text-2xl" x-text="item.icon"></span>
+                                    <span class="text-2xl" aria-hidden="true" x-text="item.icon"></span>
                                     <div>
                                         <p class="font-bold text-sm" x-text="item.name"></p>
                                         <p class="text-[10px] text-gray-500 uppercase">Click to apply</p>
@@ -348,7 +371,7 @@
                         </div>
 
                         <!-- Settings Tab -->
-                        <div x-show="currentTab === 'settings'" class="space-y-6">
+                        <div x-show="currentTab === 'settings'" x-cloak class="space-y-6">
                             <div>
                                 <h4 class="text-xs font-bold text-tatreez-red uppercase mb-4">Symmetry Mode</h4>
                                 <div class="grid grid-cols-2 gap-2">
@@ -391,17 +414,17 @@
 
             <!-- Drawing Grid -->
             <div
-                class="flex-grow max-w-[600px] aspect-square bg-white dark:bg-neutral-900 rounded-xl shadow-2xl p-6 border border-tatreez-red/10 animate-fade-in order-1 lg:order-2">
+                class="designer-grid-card w-full max-w-[640px] min-w-0 aspect-square bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-3 sm:p-5 md:p-6 border border-tatreez-red/10 animate-fade-in order-1 lg:order-2">
                 <div class="grid h-full border border-gray-100 dark:border-neutral-800"
                     :style="'grid-template-columns: repeat(' + gridSize + ', 1fr)'">
                     <template x-for="(cell, index) in cells" :key="index">
-                        <div class="grid-cell" :class="{
+                        <div class="grid-cell" role="button" tabindex="0" :aria-label="`Stitch at row ${Math.floor(index / gridSize) + 1}, column ${(index % gridSize) + 1}`" :class="{
                                 'active': cells[index],
                                 'symmetry-line-v': (symmetryMode === 'vertical' || symmetryMode === 'both') && (index % gridSize === (gridSize/2 - 1)),
                                 'symmetry-line-h': (symmetryMode === 'horizontal' || symmetryMode === 'both') && (Math.floor(index/gridSize) === (gridSize/2 - 1))
                             }"
                             :style="cells[index] ? 'background-color: ' + cells[index] + '15; color: ' + cells[index] : ''"
-                            @mousedown="toggleCell(index)" @mouseover="paintCell(index)">
+                            @pointerdown.prevent="startStroke(index)" @pointerenter="paintCell(index)" @keydown.enter.prevent="toggleCell(index)" @keydown.space.prevent="toggleCell(index)">
                             <span class="stitch-x" :style="'color: ' + cells[index]">X</span>
                             <!-- Coordinate markers for center -->
                             <template x-if="index === 0">
