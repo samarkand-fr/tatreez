@@ -1,81 +1,33 @@
-<header class="fixed w-full top-0 z-50 transition-all duration-300">
-  <nav id="nav" x-data="{ open: false }" role="navigation"
-    class="w-full glass-nav shadow-sm transition-all duration-300">
-    <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <a href="../index.html" class="block group">
-          <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
-            class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
-        </a>
-      </div>
-
-      <!-- Hamburger menu button -->
-      <div class="md:hidden">
-        <button @click="open = !open"
-          class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-          aria-label="Open main menu">
-          <div class="w-6 h-6 relative">
-            <span aria-hidden="true"
-              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-              :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
-            <span aria-hidden="true"
-              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
-              :class="{'opacity-0': open } "></span>
-            <span aria-hidden="true"
-              class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-              :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
-          </div>
-        </button>
-      </div>
-
-      <!-- Navigation menu -->
-      <div id="menu" :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
-        class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
-        <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
-          <li>
-            <a href="../index.html"
-              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-              HOME
-              <span
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </li>
-          <li>
-            <a href="../html/gallery.html"
-              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-              GALLERY
-              <span
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </li>
-          <li>
-            <a href="../html/designer.html"
-              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-              DESIGNER
-              <span
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </li>
-          <li>
-            <a href="../html/about.html"
-              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-              ABOUT
-              <span
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </li>
-          <li>
-            <a href="../html/contact.html"
-              class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-              CONTACT
-              <span
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="../index.html" aria-label="Tatreez home">
+      <img src="../images/logo-tatreez.png" alt="">
+      <span>TATREEZ</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
+    <nav class="nav" id="site-navigation" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="tatreez-history.html">The story</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="thoubs.html">Thoubs</a>
+      <a href="designer.html">Motif studio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
-<div class="h-24 md:h-28"></div> <!-- Spacer for fixed header -->
+<style>
+.site-header{position:sticky;top:0;z-index:30;background:#f4efe5ed;backdrop-filter:blur(14px);border-bottom:1px solid #25231f24}
+.site-header .nav-wrap{max-width:1240px;min-height:78px;margin:auto;padding:0 6%;display:flex;align-items:center;justify-content:space-between}
+.site-header .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.site-header .brand img{width:48px;height:48px;object-fit:contain}
+.site-header .brand span{font:600 16px 'Playfair Display',Georgia,serif;letter-spacing:.2em;color:#812f36}
+.site-header .nav{display:flex;align-items:center;gap:24px}
+.site-header .nav a{font:700 10px 'DM Sans',Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;color:#716b60}
+.site-header .nav a:hover,.site-header .nav a[aria-current=page]{color:#812f36}
+.site-header .menu-toggle{display:none;border:1px solid #25231f24;background:transparent;padding:10px 13px;color:#25231f;font:600 10px 'DM Sans',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:800px){.site-header .nav-wrap{min-height:70px}.site-header .menu-toggle{display:block}.site-header .nav{display:none;position:absolute;top:70px;left:0;right:0;padding:22px 6%;background:#f4efe5;border-bottom:1px solid #25231f24;flex-direction:column;align-items:flex-start;gap:20px}.site-header .nav.is-open{display:flex}}
+</style>
+<script>
+(()=>{const button=document.querySelector('.site-header .menu-toggle');const nav=document.querySelector('.site-header #site-navigation');if(!button||!nav)return;button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));nav.classList.toggle('is-open',!open)});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{button.setAttribute('aria-expanded','false');nav.classList.remove('is-open')}));})();
+</script>
