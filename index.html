@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fefdf5" />
   <meta name="description"
     content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
-  <title>Palestinian Embroidery - Tatreez</title>
+  <title>Tatreez | Palestinian Embroidery & Heritage</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="./images/logo-tatreez.png" />
 
   <link rel="stylesheet" href="./css/input.css" />
@@ -19,14 +19,9 @@
   <!-- Start - Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <!-- Tailwind CSS -->
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./js/tailwind_config.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     .stitch-path {
@@ -60,7 +55,7 @@
   class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal bg-pattern-keffiyeh min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden">
   <!-- Navbar (Inlined) -->
   <header class="fixed w-full top-0 z-50 transition-all duration-300">
-    <nav id="nav" x-data="{ open: false }" role="navigation"
+    <nav id="nav" x-data="{ open: false }" aria-label="Main navigation"
       class="w-full glass-nav shadow-sm transition-all duration-300">
       <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
         <!-- Logo -->
@@ -73,9 +68,9 @@
 
         <!-- Hamburger menu button -->
         <div class="md:hidden">
-          <button @click="open = !open"
+          <button type="button" @click="open = !open"
             class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-            aria-label="Open main menu">
+            aria-label="Toggle main navigation" aria-controls="menu" :aria-expanded="open.toString()">
             <div class="w-6 h-6 relative">
               <span aria-hidden="true"
                 class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
@@ -149,7 +144,7 @@
       <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-tatreez-olive/10 rounded-full blur-3xl z-0"></div>
 
       <!-- Animated SVG Motif -->
-      <div class="motif-container">
+      <div class="motif-container" aria-hidden="true">
         <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Cypress Tree (Saru) Motif -->
           <path class="stitch-path"
@@ -163,24 +158,27 @@
 
       <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <!-- Hero Text -->
-        <div class="space-y-8 animate-slide-up">
-          <h1 class="font-serif text-5xl md:text-7xl font-bold text-tatreez-red leading-tight">
-            Stitching <br />
-            <span class="text-tatreez-gold">History</span> & Hope
+        <div class="space-y-7 animate-slide-up">
+          <p class="inline-flex items-center gap-3 text-xs sm:text-sm font-semibold tracking-widest uppercase text-tatreez-olive">
+            <span class="w-10 h-px bg-tatreez-gold" aria-hidden="true"></span>
+            Palestinian art · Living heritage
+          </p>
+          <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-tatreez-red leading-tight">
+            Threads of <br />
+            <span class="text-tatreez-gold">Identity</span> & Hope
           </h1>
-          <p class="text-xl md:text-2xl text-tatreez-charcoal dark:text-gray-200 font-light leading-relaxed max-w-lg">
-            Palestine is a land naturally steeped in history. Discover
-            <span class="font-bold text-tatreez-olive">Tatreez</span>,
-            the ancient art of Palestinian embroidery that weaves together identity and resilience.
+          <p class="text-lg md:text-xl text-tatreez-charcoal dark:text-gray-200 font-light leading-relaxed max-w-xl">
+            Every stitch carries a story. Discover <span class="font-bold text-tatreez-olive">Tatreez</span>,
+            the traditional Palestinian art of embroidery, where patterns preserve memory, place and identity.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="./html/tatreez-history.html"
               class="px-8 py-3 bg-tatreez-red text-white font-semibold rounded shadow-lg hover:bg-red-800 transition-all hover:-translate-y-1">
-              Our Story
+              Discover the story
             </a>
             <a href="./html/gallery.html"
               class="px-8 py-3 border-2 border-tatreez-charcoal dark:border-tatreez-cream text-tatreez-charcoal dark:text-tatreez-cream font-semibold rounded hover:bg-tatreez-charcoal hover:text-white dark:hover:bg-tatreez-cream dark:hover:text-tatreez-charcoal transition-all">
-              View Gallery
+              Explore the gallery
             </a>
           </div>
         </div>
@@ -189,7 +187,7 @@
         <div class="flex justify-center perspective-1000 animate-fade-in" style="animation-delay: 0.3s;">
           <div class="book transform scale-75 sm:scale-90 md:scale-100 shadow-2xl">
             <div class="cover cursor-pointer group">
-              <img src="./images/Palestine.jpeg" alt="A woman wearing palestine map"
+              <img src="./images/Palestine.jpeg" alt="Palestinian heritage artwork featured on the Tatreez home page" fetchpriority="high" decoding="async"
                 class="w-full h-full object-cover rounded-lg" />
               <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
             </div>
@@ -239,8 +237,8 @@
           <div class="lg:w-1/2">
             <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
               <div class="absolute inset-0 bg-tatreez-red/10 group-hover:bg-transparent transition-colors z-10"></div>
-              <img src="./images/thoubgaza.jpeg" alt="Palestinian Thoub"
-                class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+              <img src="./images/thoubgaza.jpeg" alt="Traditional Palestinian thoub with embroidered details"
+                loading="lazy" decoding="async" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
             </div>
           </div>
 
