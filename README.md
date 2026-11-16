@@ -1,29 +1,47 @@
-## Palestinian Embroidery - Tatreez
+# Tatreez — Palestinian Embroidery
 
-* This project is a website dedicated to the rich tradition of Palestinian embroidery, also known as tatreez. 
-* It explores intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine.
+Tatreez is a cultural website dedicated to **Palestinian embroidery** and the stories carried by its motifs, colors and traditional garments. It invites visitors to discover the craft, explore regional thoub styles and learn about the heritage behind each stitch.
 
-## Features
+## Explore the website
 
-* Introduction: Provides an overview of Palestinian embroidery and its significance.
-* Thoub Embroidery: Explores the embroidery on traditional Palestinian dresses (thoub) and its cultural significance.
-* Image Section: Displays images related to Palestinian embroidery.
-* Dark Mode: light and dark themes for better readability.
+- **Home** — introduction to Tatreez and its cultural significance.
+- **Gallery** — visual discovery of Palestinian embroidery and traditional dresses.
+- **Designer** — a space dedicated to design and creativity.
+- **Tatreez history** — background on the craft and its heritage.
+- **Thoubs** — examples of regional garments and embroidery traditions.
+- **About and Contact** — project information and contact details.
 
-## Technologies Used
+## Built with
 
-* HTML
-* CSS (Tailwind CSS)
-* JavaScript (Alpine.js, jQuery)
-* Font Awesome for icons
-* Intersection Observer API for animations
+- HTML5 and CSS3
+- Tailwind CSS
+- JavaScript
+- Alpine.js for lightweight interface interactions
+- Font Awesome for icons
 
-## Installation
-* Clone the repository:
-git clone https://github.com/samarkand-fr/tatreez.git
-* Open index.html in your web browser to view the website locally.
+## Run locally
 
-## Usage
-Explore different sections of the website by scrolling or using the navigation links.
+1. Clone the repository:
 
+   ```bash
+   git clone https://github.com/samarkand-fr/tatreez.git
+   cd tatreez
+   ```
 
+2. Open `index.html` in a browser, or use a local development server (recommended so that relative assets and pages behave consistently).
+
+   With Python:
+
+   ```bash
+   python3 -m http.server 8000
+   ```
+
+3. Visit [http://localhost:8000](http://localhost:8000).
+
+## Project direction
+
+The visual identity uses a restrained palette inspired by Palestinian textile traditions: deep red, olive, warm cream and gold. The keffiyeh-inspired texture and embroidery motifs are intended to remain subtle, allowing the photographs and garments to take center stage.
+
+## Notes
+
+This is a static website; the contact form should not be considered a working message service unless it is connected to a real email or backend service.
