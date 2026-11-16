@@ -1,441 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fefdf5" />
-  <meta name="description"
-    content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
-  <title>Tatreez Gallery | Palestinian Thoub & Embroidery</title>
-  <link rel="stylesheet" href="../css/input.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- Fancybox Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/tailwind_config.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe5">
+  <meta name="description" content="Explore the visual language of Palestinian Tatreez through embroidery details, traditional motifs, colors and textile compositions.">
+  <title>The Gallery — Motifs & Embroidery | TATREEZ</title>
+  <link rel="icon" href="../images/logo-tatreez.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
   <style>
-    .stitch-path {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: stitch-draw 3s ease-in-out forwards;
-    }
-
-    @keyframes stitch-draw {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
+    :root{--paper:#f4efe5;--paper-deep:#e9dfcf;--ink:#25231f;--muted:#716b60;--wine:#812f36;--wine-dark:#5e2028;--olive:#68704e;--gold:#b28b50;--line:rgba(37,35,31,.16);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}a:focus-visible,button:focus-visible{outline:2px solid var(--wine);outline-offset:4px}
+    .topline{height:5px;background:repeating-linear-gradient(135deg,var(--wine) 0 3px,transparent 3px 7px,var(--olive) 7px 9px,transparent 9px 13px)}
+    .header{height:82px;position:sticky;top:0;z-index:20;background:rgba(244,239,229,.95);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-wrap{height:100%;max-width:1380px;margin:auto;padding:0 5.5%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.brand img{height:48px;width:auto}.brand-name{font:600 17px var(--serif);letter-spacing:.24em;color:var(--wine)}.nav{display:flex;align-items:center;gap:clamp(15px,2.4vw,34px)}.nav a{font-size:10px;font-weight:700;letter-spacing:.14em;color:#4d4942;position:relative;padding:10px 0}.nav a:not(.nav-cta):after{content:"";height:1px;position:absolute;bottom:3px;left:0;right:0;background:var(--wine);transform:scaleX(0);transform-origin:left;transition:transform .25s}.nav a:hover:after,.nav a[aria-current=page]:after{transform:scaleX(1)}.nav a[aria-current=page]{color:var(--wine)}.nav .nav-cta{background:var(--wine);color:white;padding:14px 17px}.menu-toggle{display:none;background:none;border:0;padding:10px;color:var(--ink)}.menu-toggle span{display:block;width:24px;height:1.5px;background:currentColor;margin:6px}
+    .intro{max-width:1380px;margin:auto;padding:105px 7% 68px;text-align:center}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.23em;text-transform:uppercase;color:var(--olive)}h1{font:400 clamp(48px,7vw,86px)/1.05 var(--serif);letter-spacing:-.045em;color:var(--wine);margin:22px 0}.intro-copy{font-size:14px;line-height:2;color:var(--muted);max-width:650px;margin:0 auto}.stitch{width:92px;height:2px;background:var(--gold);margin:30px auto 0;position:relative}.stitch:before,.stitch:after{content:"";position:absolute;top:-4px;width:9px;height:10px;border-top:1px solid var(--wine);border-bottom:1px solid var(--wine);transform:skew(-30deg)}.stitch:before{left:22px}.stitch:after{right:22px}
+    .gallery-area{background:var(--paper-deep);padding:70px 7% 110px}.gallery-inner{max-width:1240px;margin:auto}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:36px}.section-head h2{font:400 clamp(34px,4vw,52px)/1.1 var(--serif);margin:0}.section-head p{max-width:380px;color:var(--muted);font-size:12px;line-height:1.9;margin:0}.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}.art-card{display:block;background:rgba(255,255,255,.48);padding:10px;border:1px solid rgba(129,47,54,.14);transition:transform .25s,box-shadow .25s}.art-card:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(47,35,25,.1)}.art-image{overflow:hidden;background:#d7c7ae;position:relative}.art-image img{width:100%;aspect-ratio:4/4.35;object-fit:cover;transition:transform .6s;filter:saturate(.86)}.art-card:hover .art-image img{transform:scale(1.045)}.zoom{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;background:rgba(244,239,229,.92);display:grid;place-items:center;color:var(--wine);font-size:18px}.art-caption{padding:18px 12px 14px}.art-caption small{display:block;font-size:9px;letter-spacing:.19em;text-transform:uppercase;color:var(--olive);font-weight:700;margin-bottom:8px}.art-caption h3{font:400 24px var(--serif);margin:0 0 7px}.art-caption p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+    .note{max-width:900px;margin:0 auto;padding:90px 8%;text-align:center}.note p{font:italic clamp(25px,3.5vw,39px)/1.45 var(--serif);color:var(--wine);margin:0}.note small{display:block;margin-top:20px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive);font-weight:700}
+    .footer{background:#25231f;color:var(--paper);padding:62px 7% 27px}.footer-inner{max-width:1240px;margin:auto}.footer-top{display:flex;justify-content:space-between;gap:40px;padding-bottom:43px;border-bottom:1px solid rgba(255,255,255,.15)}.footer-brand{font:400 30px var(--serif);letter-spacing:.18em}.footer-tag{font-size:12px;color:rgba(244,239,229,.6);margin:12px 0 0;line-height:1.8}.footer-links{display:flex;gap:24px;flex-wrap:wrap;align-items:center}.footer-links a{font-size:9px;font-weight:700;letter-spacing:.14em;color:rgba(244,239,229,.8)}.footer-links a:hover{color:white}.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:23px;font-size:10px;color:rgba(244,239,229,.48)}
+    @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{align-items:start;flex-direction:column}}@media(max-width:680px){.header{height:72px}.nav-wrap{padding:0 5%}.brand img{height:42px}.brand-name{font-size:14px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:71px;left:0;right:0;background:var(--paper);padding:20px 7% 26px;border-bottom:1px solid var(--line);align-items:stretch;gap:8px;flex-direction:column}.nav.open{display:flex}.nav a{padding:12px 0}.nav .nav-cta{text-align:center;margin-top:8px}.intro{padding:76px 7% 55px}.intro-copy{font-size:13px}.gallery-area{padding:55px 6% 75px}.gallery-grid{grid-template-columns:1fr;gap:17px}.art-card{display:grid;grid-template-columns:43% 57%;align-items:center}.art-image img{aspect-ratio:1}.art-caption{padding:13px}.art-caption h3{font-size:20px}.art-caption p{font-size:10px}.zoom{width:29px;height:29px;top:8px;right:8px;font-size:15px}.note{padding:70px 8%}.footer{padding:50px 7% 24px}.footer-top,.footer-bottom{flex-direction:column}.footer-links{gap:18px 22px}.footer-bottom{gap:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
   </style>
 </head>
-
-<body
-  class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal bg-pattern-keffiyeh min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden">
-
-  <!-- Navbar (Inlined) -->
-  <header class="fixed w-full top-0 z-50 transition-all duration-300">
-    <nav id="nav" x-data="{ open: false }" aria-label="Main navigation"
-      class="w-full glass-nav shadow-sm transition-all duration-300">
-      <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
-        <div class="flex-shrink-0">
-          <a href="../index.html" class="block group">
-            <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
-              class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
-          </a>
-        </div>
-        <div class="md:hidden">
-          <button type="button" @click="open = !open"
-            class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-            aria-label="Toggle main navigation" aria-controls="menu" :aria-expanded="open.toString()">
-            <div class="w-6 h-6 relative">
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-                :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
-                :class="{'opacity-0': open } "></span>
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-                :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
-            </div>
-          </button>
-        </div>
-        <div id="menu" :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
-          class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
-          <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
-            <li>
-              <a href="../index.html"
-                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-                HOME
-                <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
-            </li>
-            <li>
-              <a href="gallery.html" class="block py-2 md:py-0 text-tatreez-red transition-colors relative group">
-                GALLERY
-                <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
-            </li>
-            <li>
-              <a href="designer.html"
-                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-                DESIGNER
-                <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
-            </li>
-            <li>
-              <a href="about.html"
-                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-                ABOUT
-                <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
-            </li>
-            <li>
-              <a href="contact.html"
-                class="block py-2 md:py-0 text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red transition-colors relative group">
-                CONTACT
-                <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-tatreez-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
-            </li>
-          </ul>
-        </div>
+<body>
+  <div class="topline" aria-hidden="true"></div>
+  <header class="header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="../index.html" aria-label="Tatreez home"><img src="../images/logo-tatreez.png" alt=""><span class="brand-name">TATREEZ</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+      <div class="nav" id="main-nav">
+        <a href="../index.html">HOME</a><a href="tatreez-history.html">THE STORY</a><a href="gallery.html" aria-current="page">GALLERY</a><a href="thoubs.html">THE THOUB</a><a href="designer.html">DESIGNER</a><a href="about.html">ABOUT</a><a class="nav-cta" href="contact.html">GET IN TOUCH ↗</a>
       </div>
     </nav>
   </header>
-
-  <!-- Content Section -->
-  <a href="#gallery-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to gallery</a>
-  <main id="gallery-content" class="min-h-screen pt-32 pb-16 container mx-auto px-4 sm:px-6">
-    <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-in">
-      <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-tatreez-olive font-semibold mb-4">Threads of memory · Palestinian heritage</p>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-tatreez-red mb-5">Tatreez Treasures</h1>
-      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed">Explore the regional artistry of Palestinian embroidery, where every garment carries patterns, craft and stories passed between generations.</p>
-      <!-- Stitching Divider -->
-      <div class="flex justify-center mt-6 overflow-hidden">
-        <svg width="160" height="30" viewBox="0 0 160 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="stitch-path"
-            d="M10 15 L20 5 L30 25 L40 5 L50 25 L60 5 L70 25 L80 5 L90 25 L100 5 L110 25 L120 5 L130 25 L140 5 L150 15"
-            stroke="#D4AF37" stroke-width="3" stroke-linecap="round" />
-        </svg>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">A closer look at the stitches</p>
+      <h1>The art within<br>every thread.</h1>
+      <p class="intro-copy">A visual study of Palestinian Tatreez: the rhythm of cross-stitches, the balance of colour and the intricate motifs that give each embroidered piece its character. This gallery celebrates the details; explore the regional garments separately in The Thoub collection.</p>
+      <div class="stitch" aria-hidden="true"></div>
+    </section>
+    <section class="gallery-area" aria-labelledby="gallery-heading">
+      <div class="gallery-inner">
+        <div class="section-head"><h2 id="gallery-heading">Patterns, details &amp; texture</h2><p>Look closely at the visual language of embroidery. Select an image to view it in a larger format.</p></div>
+        <div class="gallery-grid">
+          <a class="art-card" href="../images/tatrize1.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 01"><div class="art-image"><img src="../images/tatrize1.jpeg" alt="Close view of Palestinian embroidery, study one" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>01 / Stitch study</small><h3>The rhythm of a stitch</h3><p>A closer look at the repeated marks that build an embroidered surface.</p></div></a>
+          <a class="art-card" href="../images/tatrize2.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 02"><div class="art-image"><img src="../images/tatrize2.jpeg" alt="Palestinian embroidery detail, study two" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>02 / Pattern study</small><h3>Geometry in thread</h3><p>Repeating shapes create structure, movement and visual balance.</p></div></a>
+          <a class="art-card" href="../images/tatrize3.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 03"><div class="art-image"><img src="../images/tatrize3.jpeg" alt="Traditional embroidery detail, study three" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>03 / Textile study</small><h3>Texture &amp; patience</h3><p>Every small stitch contributes to the character of the finished textile.</p></div></a>
+          <a class="art-card" href="../images/tatrize4.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 04"><div class="art-image"><img src="../images/tatrize4.jpeg" alt="Palestinian Tatreez pattern detail, study four" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>04 / Motif study</small><h3>Motifs with meaning</h3><p>Traditional forms carry memory through patterns passed between generations.</p></div></a>
+          <a class="art-card" href="../images/tatrize5.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 05"><div class="art-image"><img src="../images/tatrize5.jpeg" alt="Embroidered textile detail, study five" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>05 / Colour study</small><h3>A language of colour</h3><p>Colour combinations help give each composition its distinctive presence.</p></div></a>
+          <a class="art-card" href="../images/tatrize6.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 06"><div class="art-image"><img src="../images/tatrize6.jpeg" alt="Traditional Palestinian embroidery, study six" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>06 / Pattern study</small><h3>Lines &amp; repetition</h3><p>Rhythm and repetition transform simple stitches into intricate designs.</p></div></a>
+          <a class="art-card" href="../images/tatrize7.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 07"><div class="art-image"><img src="../images/tatrize7.jpeg" alt="Tatreez textile composition, study seven" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>07 / Composition</small><h3>Balance &amp; symmetry</h3><p>Careful placement gives motifs their order and distinctive visual flow.</p></div></a>
+          <a class="art-card" href="../images/tatrize8.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 08"><div class="art-image"><img src="../images/tatrize8.jpeg" alt="Palestinian embroidery composition, study eight" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>08 / Textile study</small><h3>Craft in detail</h3><p>The beauty of Tatreez emerges through the care invested in every detail.</p></div></a>
+          <a class="art-card" href="../images/tatrize9.jpeg" data-fancybox="tatreez-art" data-caption="Tatreez — embroidery study 09"><div class="art-image"><img src="../images/tatrize9.jpeg" alt="Traditional Tatreez embroidery detail, study nine" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></div><div class="art-caption"><small>09 / Motif study</small><h3>A living visual archive</h3><p>Patterns keep cultural knowledge visible, shared and continually renewed.</p></div></a>
+        </div>
       </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-8">
-
-      <!-- Card 1: AKKA -->
-      <a href="../images/thoub-akka.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.1s;">
-        <img src="../images/thoub-akka.jpeg" alt="Akka Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2 transition-transform duration-500">
-            Akka</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Akka's vibrant embroidery features nature-inspired motifs, reflecting the city's diverse heritage.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-gold rounded-full mt-3 transition-all duration-300 group-hover:w-20">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 2: AL-KHALIL -->
-      <a href="../images/thoub-alkhalil.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.2s;">
-        <img src="../images/thoub-alkhalil.jpeg" alt="Al-Khalil Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Al-Khalil</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Hebron's embroidery tells stories of heritage through intricate floral and geometric patterns.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 3: AL-NASERA -->
-      <a href="../images/thoub-alnasrah.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.3s;">
-        <img src="../images/thoub-alnasrah.jpeg" alt="Al-Nasera Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Al-Nasera</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Nazareth's embroidery preserves identity with distinct local flora and geometric motifs.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 4: AL-JALIL -->
-      <a href="../images/thoub-ariha.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.4s;">
-        <img src="../images/thoub-ariha.jpeg" alt="Al-Jalil Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Al-Jalil</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Galilee's vibrant embroidery blends cultural influences in a powerful expression of identity.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 5: BETHLEHEM -->
-      <a href="../images/thoub-beitlaham.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.5s;">
-        <img src="../images/thoub-beitlaham.jpeg" alt="Bethlehem Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Bethlehem</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Famous for metallic threads, Bethlehem's designs reflect deep spiritual and historical heritage.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 6: JENIN -->
-      <a href="../images/thoub-genin.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.6s;">
-        <img src="../images/thoub-genin.jpeg" alt="Jenin Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Jenin</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Jenin's vibrant embroidery embodies the resilience and determination of the Palestinian people.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 7: AL-KUDS -->
-      <a href="../images/thoub-kouds.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.7s;">
-        <img src="../images/thoub-kouds.jpeg" alt="Al-Kuds Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Al-Kuds</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Jerusalem's spiritual embroidery draws inspiration from iconic religious and historical landmarks.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 8: RAMALLAH -->
-      <a href="../images/thoub-ramallah.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.8s;">
-        <img src="../images/thoub-ramallah.jpeg" alt="Ramallah Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Ramallah</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Ramallah's iconic cross-stitch on white linen captures the land's essence with cypress motifs.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 9: TULKAREM -->
-      <a href="../images/thoub-toulkaram.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 0.9s;">
-        <img src="../images/thoub-toulkaram.jpeg" alt="Tulkarem Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Tulkarem</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Tulkarem's exquisite embroidery stands as a symbol of creativity and enduring Palestinian tradition.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 10: YAFA -->
-      <a href="../images/thoub-yafa.jpeg" data-fancybox="gallery"
-        class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/5] sm:aspect-[3/4] animate-slide-up bg-black ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tatreez-gold"
-        style="animation-delay: 1.0s;">
-        <img src="../images/thoub-yafa.jpeg" alt="Yafa Thoub" loading="lazy" decoding="async"
-          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-        </div>
-        <div class="absolute inset-0 p-6 flex flex-col justify-end">
-          <h2
-            class="text-3xl font-serif font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            Yafa</h2>
-          <div
-            class="mt-2 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:max-h-40 group-focus-visible:opacity-100 transition-all duration-500 overflow-hidden">
-            <p class="text-gray-200 text-[15px] leading-relaxed mb-4">
-              Jaffa's embroidery blends coastal beauty with history, featuring orange blossoms and cypress trees.
-            </p>
-          </div>
-          <div
-            class="h-1 w-12 bg-tatreez-red rounded-full mt-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-          </div>
-        </div>
-      </a>
-
-    </div>
+    </section>
+    <section class="note"><p>“The smallest stitch can hold a story larger than the cloth itself.”</p><small>Threads of memory · Palestinian Tatreez</small></section>
   </main>
-
-  <!-- Footer (Inlined) -->
-  <footer
-    class="bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300">
-    <div class="max-w-screen-xl mx-auto px-6 py-12">
-      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
-        <div class="mb-4 md:mb-0">
-          <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
-          <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
-            Preserving the thread of Palestinian identity.
-          </p>
-        </div>
-        <div class="flex items-center space-x-6">
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-facebook text-xl"></i></a>
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-twitter text-xl"></i></a>
-        </div>
-      </div>
-      <div
-        class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-        <p>&copy; 2026 Tatreez. All rights reserved.</p>
-        <p class="mt-2 md:mt-0">Designed by <a href="#"
-            class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Utilities -->
-  <script src="../js/utils.js"></script>
-  <!-- Fancybox Scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (window.Fancybox) {
-        Fancybox.bind("[data-fancybox]", {
-          animated: true,
-          dragToClose: true,
-          Thumbs: { autoStart: false }
-        });
-      }
-    });
-  </script>
-  <!-- Fade in animation -->
-  <script src="../js/fade_in.js"></script>
-  <!-- Menu script -->
-  <script src="../js/menu.js"></script>
+  <footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand">TATREEZ</div><p class="footer-tag">Preserving the thread of Palestinian identity<br>through stories, patterns and craft.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="tatreez-history.html">THE STORY</a><a href="gallery.html">GALLERY</a><a href="thoubs.html">THE THOUB</a><a href="designer.html">DESIGNER</a><a href="contact.html">CONTACT</a></nav></div><div class="footer-bottom"><span>© 2026 Tatreez. A celebration of Palestinian heritage.</span><span>Designed with care.</span></div></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>Fancybox.bind('[data-fancybox="tatreez-art"]',{groupAll:true,Toolbar:{display:{left:["infobar"],middle:[],right:["zoomIn","zoomOut","close"]}}});const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('#main-nav');menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open navigation':'Close navigation');navigation.classList.toggle('open',!open)});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open navigation')}));</script>
 </body>
-
 </html>
