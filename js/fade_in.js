@@ -1,16 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const body = document.querySelector("body");
-    body.classList.remove("opacity-0");
-    body.classList.add("opacity-1");
+document.addEventListener("DOMContentLoaded", () => {
+  // Tailwind provides opacity-0 and opacity-100, not opacity-1.
+  // Remove the initial hidden state without delaying every image in the page.
+  document.body.classList.remove("opacity-0");
 
-    const photos = document.querySelectorAll("img");
-    let delay = 0;
-
-    photos.forEach((photo) => {
-        setTimeout(() => {
-            photo.classList.remove("opacity-0");
-            photo.classList.add("opacity-1");
-        }, delay);
-        delay += 100; 
-    });
+  document.querySelectorAll("img.opacity-0").forEach((image) => {
+    image.classList.remove("opacity-0");
+    image.classList.add("opacity-100");
+  });
 });
