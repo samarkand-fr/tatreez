@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Palestinian Embroidery - Tatreez - About</title>
+  <title>About Tatreez | Palestinian Embroidery & Living Heritage</title>
   <meta name="description"
     content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
   <!-- Favicon -->
@@ -29,7 +29,7 @@
   class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal bg-pattern-keffiyeh min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden">
   <!-- Navbar (Inlined) -->
   <header class="fixed w-full top-0 z-50 transition-all duration-300">
-    <nav id="nav" x-data="{ open: false }" role="navigation"
+    <nav id="nav" x-data="{ open: false }" aria-label="Main navigation"
       class="w-full glass-nav shadow-sm transition-all duration-300">
       <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
         <!-- Logo -->
@@ -42,9 +42,9 @@
 
         <!-- Hamburger menu button -->
         <div class="md:hidden">
-          <button @click="open = !open"
+          <button type="button" @click="open = !open"
             class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-            aria-label="Open main menu">
+            aria-label="Toggle main navigation" aria-controls="menu" :aria-expanded="open.toString()">
             <div class="w-6 h-6 relative">
               <span aria-hidden="true"
                 class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
@@ -110,19 +110,20 @@
   </header>
 
   <!-- Content -->
-  <div class="container mx-auto px-6 pt-24 pb-12">
-    <h1
-      class="text-3xl lg:text-5xl pt-10 font-bold font-serif text-end md:mr-40 text-tatreez-red animate-fade-in relative z-10">
-      Discover the Story Behind Tatreez <span class="animate-wave inline-block">🇵🇸</span>
-    </h1>
+  <main class="container mx-auto px-4 sm:px-6 pt-32 pb-12">
+    <header class="max-w-3xl mx-auto text-center mb-10 sm:mb-14 animate-fade-in">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-tatreez-olive font-semibold mb-3">A heritage carried by every stitch</p>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif text-tatreez-red mb-5">The Story Behind Tatreez</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">Discover the Palestinian embroidery tradition and the stories woven into its patterns.</p>
+    </header>
 
-    <div class="grid lg:grid-cols-2 gap-12 font-signika mt-12 items-center">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 font-signika items-center">
       <!-- Image Card -->
       <div class="lg:w-4/5 mx-auto">
         <div
-          class="bg-white dark:bg-neutral-900 p-4 pb-16 m-4 shadow-xl border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-3 relative rounded-sm">
-          <img src="../images/about.png" alt="Tatreez Embroidery"
-            class="flex flex-col w-full aspect-square object-cover h-auto rounded-sm border border-gray-100 dark:border-gray-800" />
+          class="bg-white dark:bg-neutral-900 p-3 sm:p-4 pb-14 sm:pb-16 m-2 sm:m-4 shadow-xl border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-2 relative rounded-sm">
+          <img src="../images/about.png" alt="Palestinian tatreez embroidery textile with traditional decorative patterns"
+            loading="lazy" decoding="async" class="w-full aspect-square object-cover h-auto rounded-sm border border-gray-100 dark:border-gray-800" />
           <div class="absolute bottom-0 left-0 right-0 text-center">
             <p class="text-gray-800 dark:text-slate-200 pb-4 h-full text-5xl font-nothing-you-could-do">
               tatreez
@@ -133,7 +134,7 @@
 
       <!-- Text Content -->
       <section
-        class="font-normal text-base md:text-lg text-gray-800 dark:text-gray-200 leading-relaxed space-y-6 bg-white/60 dark:bg-black/40 p-8 rounded-xl backdrop-blur-sm">
+        class="font-normal text-base md:text-lg text-gray-800 dark:text-gray-200 leading-relaxed space-y-6 bg-white/70 dark:bg-black/40 p-6 sm:p-8 rounded-2xl backdrop-blur-sm border border-tatreez-red/10 shadow-sm">
         <p>
           Palestinian embroidery is a cherished cultural
           tradition deeply rooted in the history and identity of the
@@ -167,7 +168,7 @@
         </p>
       </section>
     </div>
-  </div>
+  </main>
 
   <!-- Footer (Inlined) -->
   <footer
