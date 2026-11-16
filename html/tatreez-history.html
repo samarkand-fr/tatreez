@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
-    <title>Palestinian Embroidery - Tatreez History</title>
+    <title>Tatreez History | The Story of Palestinian Embroidery</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="../images/logo-tatreez.png" />
+    <link rel="stylesheet" href="../css/input.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/tailwind_config.js"></script>
 
@@ -45,7 +46,7 @@
 
     <!-- Navbar (Inlined) -->
     <header class="fixed w-full top-0 z-50 transition-all duration-300">
-        <nav id="nav" x-data="{ open: false }" role="navigation"
+        <nav id="nav" x-data="{ open: false }" aria-label="Main navigation"
             class="w-full glass-nav shadow-sm transition-all duration-300">
             <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
                 <div class="flex-shrink-0">
@@ -55,9 +56,9 @@
                     </a>
                 </div>
                 <div class="md:hidden">
-                    <button @click="open = !open"
+                    <button type="button" @click="open = !open"
                         class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-                        aria-label="Open main menu">
+                        aria-label="Toggle main navigation" aria-controls="menu" :aria-expanded="open.toString()">
                         <div class="w-6 h-6 relative">
                             <span aria-hidden="true"
                                 class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
@@ -121,21 +122,22 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-6 pt-32 pb-12">
-        <!-- Title -->
-        <h1 class="text-4xl md:text-5xl font-serif font-bold text-center text-tatreez-red mb-16 animate-fade-in">
-            A Legacy Stitched in Time
-        </h1>
+    <main class="container mx-auto px-4 sm:px-6 pt-32 pb-12">
+        <!-- Page introduction -->
+        <header class="max-w-3xl mx-auto text-center mb-12 sm:mb-16 animate-fade-in">
+            <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-tatreez-olive font-semibold mb-3">Memory · Craft · Identity</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-center text-tatreez-red mb-5">A Legacy Stitched in Time</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">Explore the traditions, techniques and meanings carried through Palestinian embroidery.</p>
+        </header>
 
         <!-- Section 1 -->
         <div
-            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            class="flex flex-col md:flex-row items-center gap-7 lg:gap-10 mb-8 sm:mb-10 bg-white/80 dark:bg-neutral-900/80 p-5 sm:p-7 lg:p-9 rounded-2xl backdrop-blur-md shadow-lg border border-tatreez-red/10 dark:border-white/10 hover:shadow-xl transition-shadow duration-300 group">
             <div
                 class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                <img src="../images/tatrize4.jpeg" alt="Palestinian Tatreez Detail"
-                    class="w-full h-64 md:h-80 object-cover" />
+                <img src="../images/tatrize4.jpeg" alt="Palestinian Tatreez Detail" loading="lazy" decoding="async" class="w-full h-56 sm:h-64 md:h-72 object-cover" />
             </div>
-            <div class="w-full md:w-2/3 space-y-6">
+            <div class="w-full md:w-3/5 space-y-4 sm:space-y-5">
                 <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Ancient Roots</h2>
                 <p class="text-lg leading-relaxed dark:text-gray-300">
                     Palestinian Tatreez is a beautiful and ancient form of embroidery that
@@ -161,10 +163,10 @@
 
         <!-- Section 2 -->
         <div
-            class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            class="flex flex-col md:flex-row-reverse items-center gap-7 lg:gap-10 mb-8 sm:mb-10 bg-white/80 dark:bg-neutral-900/80 p-5 sm:p-7 lg:p-9 rounded-2xl backdrop-blur-md shadow-lg border border-tatreez-red/10 dark:border-white/10 hover:shadow-xl transition-shadow duration-300 group">
             <div
                 class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                <img src="../images/tatrize5.jpeg" alt="Regional Variations" class="w-full h-64 md:h-80 object-cover" />
+                <img src="../images/tatrize5.jpeg" alt="Regional Variations" loading="lazy" decoding="async" class="w-full h-56 sm:h-64 md:h-72 object-cover" />
             </div>
             <div class="w-full md:w-2/3 space-y-6">
                 <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Language of Color</h2>
@@ -180,10 +182,10 @@
 
         <!-- Section 3 -->
         <div
-            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            class="flex flex-col md:flex-row items-center gap-7 lg:gap-10 mb-8 sm:mb-10 bg-white/80 dark:bg-neutral-900/80 p-5 sm:p-7 lg:p-9 rounded-2xl backdrop-blur-md shadow-lg border border-tatreez-red/10 dark:border-white/10 hover:shadow-xl transition-shadow duration-300 group">
             <div
                 class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                <img src="../images/tatrize8.jpeg" alt="Modern Tatreez" class="w-full h-64 md:h-80 object-cover" />
+                <img src="../images/tatrize8.jpeg" alt="Modern Tatreez" loading="lazy" decoding="async" class="w-full h-56 sm:h-64 md:h-72 object-cover" />
             </div>
             <div class="w-full md:w-2/3 space-y-6">
                 <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Versatile Art</h2>
@@ -198,10 +200,10 @@
 
         <!-- Section 4 -->
         <div
-            class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            class="flex flex-col md:flex-row-reverse items-center gap-7 lg:gap-10 mb-8 sm:mb-10 bg-white/80 dark:bg-neutral-900/80 p-5 sm:p-7 lg:p-9 rounded-2xl backdrop-blur-md shadow-lg border border-tatreez-red/10 dark:border-white/10 hover:shadow-xl transition-shadow duration-300 group">
             <div
                 class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                <img src="../images/tatrize2.jpeg" alt="Detailed Stitching" class="w-full h-64 md:h-80 object-cover" />
+                <img src="../images/tatrize2.jpeg" alt="Detailed Stitching" loading="lazy" decoding="async" class="w-full h-56 sm:h-64 md:h-72 object-cover" />
             </div>
             <div class="w-full md:w-2/3 space-y-6">
                 <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Patience & Mastery</h2>
@@ -220,10 +222,10 @@
 
         <!-- Section 5 -->
         <div
-            class="flex flex-col md:flex-row items-center gap-12 mb-16 bg-white/80 dark:bg-neutral-900/80 p-8 md:p-12 rounded-2xl backdrop-blur-md shadow-xl border border-white/50 dark:border-white/10 hover:shadow-2xl hover:bg-white/90 dark:hover:bg-neutral-900/90 transition-all duration-500 group">
+            class="flex flex-col md:flex-row items-center gap-7 lg:gap-10 mb-8 sm:mb-10 bg-white/80 dark:bg-neutral-900/80 p-5 sm:p-7 lg:p-9 rounded-2xl backdrop-blur-md shadow-lg border border-tatreez-red/10 dark:border-white/10 hover:shadow-xl transition-shadow duration-300 group">
             <div
                 class="w-full md:w-1/3 overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                <img src="../images/tatrize1.jpeg" alt="Resilience" class="w-full h-64 md:h-80 object-cover" />
+                <img src="../images/tatrize1.jpeg" alt="Resilience" loading="lazy" decoding="async" class="w-full h-56 sm:h-64 md:h-72 object-cover" />
             </div>
             <div class="w-full md:w-2/3 space-y-6">
                 <h2 class="text-2xl font-bold font-serif text-tatreez-gold">Symbol of Identity</h2>
@@ -273,11 +275,8 @@
         </div>
     </footer>
 
-    <script src="../js/utils.js"></script>
-    <script>
-        // No loadContent calls needed
-    </script>
     <script src="../js/fade_in.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>
