@@ -1,178 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Tatreez | Palestinian Embroidery & Living Heritage</title>
-  <meta name="description"
-    content="Discover the rich tradition of Palestinian embroidery, known as tatreez. Explore intricate designs, motifs, and stitches that reflect the cultural heritage and identity of Palestine." />
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="../images/logo-tatreez.png" />
-
-  <link rel="stylesheet" href="../css/input.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/tailwind_config.js"></script>
-  <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- Start - Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- End - Fonts -->
-</head>
-
-<body
-  class="font-signika bg-tatreez-cream dark:bg-tatreez-charcoal bg-pattern-keffiyeh min-h-screen text-tatreez-charcoal dark:text-white transition duration-500 overflow-x-hidden">
-  <!-- Navbar (Inlined) -->
-  <header class="fixed w-full top-0 z-50 transition-all duration-300">
-    <nav id="nav" x-data="{ open: false }" aria-label="Main navigation"
-      class="w-full glass-nav shadow-sm transition-all duration-300">
-      <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="../index.html" class="block group">
-            <img src="../images/logo-tatreez.png" alt="TATREEZ Logo"
-              class="h-12 w-auto sm:h-14 md:h-16 transition-transform duration-300 group-hover:scale-105" />
-          </a>
-        </div>
-
-        <!-- Hamburger menu button -->
-        <div class="md:hidden">
-          <button type="button" @click="open = !open"
-            class="text-tatreez-charcoal dark:text-tatreez-cream hover:text-tatreez-red focus:outline-none focus:ring-2 focus:ring-tatreez-red rounded-md p-2 transition-colors"
-            aria-label="Toggle main navigation" aria-controls="menu" :aria-expanded="open.toString()">
-            <div class="w-6 h-6 relative">
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-                :class="{'rotate-45 top-3': open, 'top-1.5': !open }"></span>
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out top-3"
-                :class="{'opacity-0': open } "></span>
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out"
-                :class="{'-rotate-45 top-3': open, 'top-4.5': !open}"></span>
-            </div>
-          </button>
-        </div>
-
-        <!-- Navigation menu -->
-        <div id="menu" :class="{'max-h-96 opacity-100': open, 'max-h-0 opacity-0 md:opacity-100 md:max-h-full': !open}"
-          class="w-full md:w-auto md:flex md:items-center overflow-hidden transition-all duration-500 ease-in-out">
-          <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-signika font-semibold text-lg">
-<li><a href="../index.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">HOME</a></li>
-<li><a href="tatreez-history.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">THE STORY</a></li>
-<li><a href="gallery.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">GALLERY</a></li>
-<li><a href="thoubs.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">THE THOUB</a></li>
-<li><a href="designer.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">DESIGNER</a></li>
-<li><a href="about.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">ABOUT</a></li>
-<li><a href="contact.html" class="block py-2 md:py-0 hover:text-tatreez-red transition-colors">CONTACT</a></li>
-</ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Content -->
-  <main class="container mx-auto px-4 sm:px-6 pt-32 pb-12">
-    <header class="max-w-3xl mx-auto text-center mb-10 sm:mb-14 animate-fade-in">
-      <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-tatreez-olive font-semibold mb-3">A heritage carried by every stitch</p>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif text-tatreez-red mb-5">The Story Behind Tatreez</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">Discover the Palestinian embroidery tradition and the stories woven into its patterns.</p>
-    </header>
-
-    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 font-signika items-center">
-      <!-- Image Card -->
-      <div class="lg:w-4/5 mx-auto">
-        <div
-          class="bg-white dark:bg-neutral-900 p-3 sm:p-4 pb-14 sm:pb-16 m-2 sm:m-4 shadow-xl border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-2 relative rounded-sm">
-          <img src="../images/about.png" alt="Palestinian tatreez embroidery textile with traditional decorative patterns"
-            loading="lazy" decoding="async" class="w-full aspect-square object-cover h-auto rounded-sm border border-gray-100 dark:border-gray-800" />
-          <div class="absolute bottom-0 left-0 right-0 text-center">
-            <p class="text-gray-800 dark:text-slate-200 pb-4 h-full text-5xl font-nothing-you-could-do">
-              tatreez
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Text Content -->
-      <section
-        class="font-normal text-base md:text-lg text-gray-800 dark:text-gray-200 leading-relaxed space-y-6 bg-white/70 dark:bg-black/40 p-6 sm:p-8 rounded-2xl backdrop-blur-sm border border-tatreez-red/10 shadow-sm">
-        <p>
-          Palestinian embroidery is a cherished cultural
-          tradition deeply rooted in the history and identity of the
-          Palestinian people. This art form, primarily practiced by
-          Palestinian women, serves as a means of preserving heritage,
-          storytelling, and expressing individual and collective identity.
-          Passed down through generations, Palestinian embroidery features
-          intricate designs, motifs, and stitches, each carrying symbolic
-          meanings that reflect elements of nature, daily life, and
-          Palestinian folklore.
-        </p>
-        <p>
-          The craftsmanship of Palestinian embroidery is characterized by
-          meticulous attention to detail and a rich array of vibrant colors.
-          Using traditional techniques such as cross-stitch, satin stitch, and
-          chain stitch, artisans create intricate patterns on fabrics like
-          linen, cotton, or wool. Each region within Palestine boasts its own
-          distinct embroidery style, with unique motifs, colors, and stitches
-          that reflect the local culture and heritage.
-        </p>
-        <p>
-          Beyond its cultural significance, Palestinian embroidery has
-          transcended into a symbol of resilience and solidarity. It is not
-          only an art form but also a form of activism, utilized in
-          contemporary fashion, art, and advocacy efforts to raise awareness
-          about Palestinian culture and the ongoing struggle for justice.
-          Through its intricate beauty and enduring presence, Palestinian
-          embroidery continues to serve as a powerful testament to the
-          resilience, creativity, and cultural richness of the Palestinian
-          people.
-        </p>
-      </section>
-    </div>
-  </main>
-
-  <!-- Footer (Inlined) -->
-  <footer
-    class="bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300">
-    <div class="max-w-screen-xl mx-auto px-6 py-12">
-      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
-        <div class="mb-4 md:mb-0">
-          <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
-          <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
-            Preserving the thread of Palestinian identity.
-          </p>
-        </div>
-        <div class="flex items-center space-x-6">
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-facebook text-xl"></i></a>
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="text-gray-500 hover:text-tatreez-red transition-colors"><i
-              class="fab fa-twitter text-xl"></i></a>
-        </div>
-      </div>
-      <div
-        class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-        <p>&copy; 2026 Tatreez. All rights reserved.</p>
-        <p class="mt-2 md:mt-0">Designed by <a href="#"
-            class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/utils.js"></script>
-  <script>
-    // No loadContent calls needed
-  </script>
-
-  <script src="../js/fade_in.js"></script>
-  <script src="../js/menu.js"></script>
-</body>
-
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4efe5">
+<meta name="description" content="About Tatreez: a digital space celebrating Palestinian embroidery, its makers, regional textile traditions and living cultural heritage.">
+<title>About the Project | TATREEZ</title>
+<link rel="icon" href="../images/logo-tatreez.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4efe5;--deep:#e9dfcf;--ink:#25231f;--muted:#716b60;--wine:#812f36;--olive:#68704e;--gold:#b28b50;--line:#25231f26;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.topline{height:5px;background:repeating-linear-gradient(135deg,var(--wine) 0 3px,transparent 3px 7px,var(--olive) 7px 9px,transparent 9px 13px)}.header{height:82px;position:sticky;top:0;z-index:20;background:#f4efe5ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav-wrap{height:100%;max-width:1380px;margin:auto;padding:0 5.5%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.brand img{height:48px}.brand span{font:600 17px var(--serif);letter-spacing:.24em;color:var(--wine)}.nav{display:flex;align-items:center;gap:clamp(15px,2vw,28px)}.nav a{font-size:9px;font-weight:700;letter-spacing:.14em;color:#4d4942;padding:10px 0;position:relative}.nav a:after{content:"";position:absolute;bottom:3px;left:0;right:0;height:1px;background:var(--wine);transform:scaleX(0);transform-origin:left;transition:.2s}.nav a:hover:after,.nav a[aria-current=page]:after{transform:scaleX(1)}.nav a[aria-current=page]{color:var(--wine)}.nav .cta{background:var(--wine);color:white;padding:13px 16px}.nav .cta:after{display:none}.toggle{display:none;background:none;border:0;font-size:23px;color:var(--ink)}.hero{max-width:1240px;margin:auto;padding:100px 7% 85px;text-align:center}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--olive)}h1,h2,h3{font-family:var(--serif);font-weight:400}h1{font-size:clamp(48px,6.5vw,82px);line-height:1.04;letter-spacing:-.045em;color:var(--wine);margin:20px 0}.hero>p:not(.eyebrow){max-width:720px;margin:0 auto;color:var(--muted);font-size:14px;line-height:2}.stitch{width:90px;height:7px;margin:30px auto;background:repeating-linear-gradient(135deg,var(--wine) 0 2px,transparent 2px 7px,var(--gold) 7px 9px,transparent 9px 14px)}.manifesto{background:var(--deep);padding:78px 7%}.manifesto-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:9%;align-items:center}.manifesto img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.82)}.manifesto h2{font-size:clamp(35px,4.5vw,54px);line-height:1.12;color:var(--wine);margin:15px 0 22px}.manifesto p{font-size:13px;line-height:2;color:var(--muted)}.values{max-width:1120px;margin:auto;padding:90px 7% 105px}.values-head{text-align:center;margin-bottom:42px}.values-head h2{font-size:clamp(35px,4vw,48px);color:var(--wine);margin:12px 0}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.value{border:1px solid var(--line);padding:27px 25px;min-height:205px}.value span{font:italic 32px var(--serif);color:var(--gold)}.value h3{font-size:23px;margin:12px 0}.value p{font-size:12px;line-height:1.9;color:var(--muted)}.explore{background:var(--wine);color:var(--paper);padding:65px 7%;text-align:center}.explore h2{font-size:clamp(32px,4vw,46px);margin:0 0 13px}.explore p{font-size:13px;color:#ffffffc4;line-height:1.8}.explore a{display:inline-block;margin-top:15px;padding:14px 20px;border:1px solid #ffffff80;font-size:9px;font-weight:700;letter-spacing:.16em}.explore a:hover{background:var(--paper);color:var(--wine)}.footer{background:var(--ink);color:var(--paper);padding:55px 7% 25px}.footer-inner{max-width:1240px;margin:auto}.footer-top{display:flex;justify-content:space-between;gap:30px;padding-bottom:32px;border-bottom:1px solid #ffffff26}.footer-brand{font:30px var(--serif);letter-spacing:.17em}.footer p{font-size:12px;color:#ffffff9c;line-height:1.8}.footer-links{display:flex;gap:22px;align-items:center;flex-wrap:wrap}.footer-links a{font-size:9px;font-weight:700;letter-spacing:.14em}.footer-bottom{display:flex;justify-content:space-between;padding-top:20px;font-size:10px;color:#ffffff80}
+@media(max-width:900px){.nav{gap:13px}.nav a{font-size:8px}}@media(max-width:700px){.header{height:72px}.brand img{height:42px}.brand span{font-size:14px}.toggle{display:block}.nav{display:none;position:absolute;top:71px;left:0;right:0;background:var(--paper);padding:20px 7% 25px;flex-direction:column;align-items:stretch;gap:7px;border-bottom:1px solid var(--line)}.nav.open{display:flex}.nav a{font-size:10px;padding:11px 0}.nav .cta{text-align:center;margin-top:8px}.hero{padding:70px 7% 60px}.manifesto{padding:58px 7%}.manifesto-inner{grid-template-columns:1fr;gap:30px}.manifesto img{max-height:370px;object-position:center 45%}.values{padding:65px 7% 75px}.value-grid{grid-template-columns:1fr}.value{min-height:0}.footer-top,.footer-bottom{flex-direction:column;gap:15px}.footer-links{gap:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style></head>
+<body><div class="topline"></div>
+<header class="header"><nav class="nav-wrap" aria-label="Main navigation"><a class="brand" href="../index.html"><img src="../images/logo-tatreez.png" alt=""><span>TATREEZ</span></a><button class="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button><div class="nav" id="site-nav"><a href="../index.html">HOME</a><a href="tatreez-history.html">THE STORY</a><a href="gallery.html">GALLERY</a><a href="thoubs.html">THE THOUB</a><a href="designer.html">DESIGNER</a><a href="about.html" aria-current="page">ABOUT</a><a class="cta" href="contact.html">GET IN TOUCH ↗</a></div></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">A digital space for a living heritage</p><h1>More than a pattern.<br><em>A connection.</em></h1><p>TATREEZ is a space dedicated to Palestinian embroidery — its beauty, its diversity and the people who keep this tradition present in everyday life.</p><div class="stitch" aria-hidden="true"></div></section>
+<section class="manifesto"><div class="manifesto-inner"><img src="../images/about.png" alt="Textile detail representing Palestinian embroidery" loading="lazy"><div><p class="eyebrow">Why this project exists</p><h2>Keeping the thread visible.</h2><p>This project brings together stories, embroidered details and regional garments to offer an accessible way to discover Palestinian Tatreez.</p><p>It is designed as an invitation to look closely: to notice the care in each stitch, explore the variety of textile traditions and appreciate the knowledge carried from one generation to another.</p><p>Rather than treating embroidery as something frozen in the past, TATREEZ presents it as a living practice — one that can be remembered, shared and reimagined.</p></div></div></section>
+<section class="values"><header class="values-head"><p class="eyebrow">The spirit of TATREEZ</p><h2>What guides this space</h2></header><div class="value-grid"><article class="value"><span>01</span><h3>Discover</h3><p>Explore the techniques, visual details and regional diversity that make Palestinian embroidery so distinctive.</p></article><article class="value"><span>02</span><h3>Respect</h3><p>Approach cultural heritage with care, acknowledging the makers, communities and knowledge behind every textile.</p></article><article class="value"><span>03</span><h3>Keep creating</h3><p>Connect tradition with the present through a creative space that invites curiosity and experimentation.</p></article></div></section>
+<section class="explore"><h2>There is always more to discover.</h2><p>Explore the embroidered details, meet the regional thoub styles and try creating a motif of your own.</p><a href="gallery.html">EXPLORE THE GALLERY ↗</a></section>
+</main>
+<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand">TATREEZ</div><p>Preserving the thread of Palestinian identity<br>through stories, patterns and craft.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="tatreez-history.html">THE STORY</a><a href="gallery.html">GALLERY</a><a href="thoubs.html">THE THOUB</a><a href="designer.html">DESIGNER</a><a href="contact.html">CONTACT</a></nav></div><div class="footer-bottom"><span>© 2026 Tatreez. A celebration of Palestinian heritage.</span><span>Made with care.</span></div></div></footer>
+<script>const menuButton=document.querySelector('.toggle'),navigation=document.querySelector('#site-nav');menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');navigation.classList.toggle('open',!open)});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu')}));</script></body></html>
