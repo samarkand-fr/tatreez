@@ -255,3 +255,52 @@ body {
   -ms-transform: rotatey(-80deg);
   transform: rotatey(-80deg);
 }
+
+/* Accessibility and responsive refinements */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+/* Keep the heritage-inspired palette while improving small-screen layouts. */
+@media (max-width: 640px) {
+  .book {
+    width: min(100%, 340px);
+    height: 420px;
+  }
+
+  .bg-pattern-keffiyeh::before {
+    background-size: 280px;
+  }
+}
+
+/* Respect visitors who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
