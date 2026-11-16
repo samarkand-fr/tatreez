@@ -1,47 +1,24 @@
-<footer
-  class="bg-tatreez-cream dark:bg-tatreez-charcoal border-t border-tatreez-red/10 dark:border-white/10 mt-16 transition-colors duration-300">
-  <div class="max-w-screen-xl mx-auto px-6 py-12">
-    <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
-
-      <!-- Brand & Tagline -->
-      <div class="mb-4 md:mb-0">
-        <h3 class="font-signika text-2xl font-bold text-tatreez-red tracking-wide">TATREEZ</h3>
-        <p class="mt-2 text-tatreez-charcoal dark:text-gray-300 font-light italic">
-          Preserving the thread of Palestinian identity.
-        </p>
-      </div>
-
-      <!-- Social Links -->
-      <div class="flex items-center space-x-6">
-        <a href="https://www.facebook.com" target="_blank" rel="noreferrer"
-          class="text-gray-500 hover:text-tatreez-red transition-colors transform hover:-translate-y-1">
-          <span class="sr-only">Facebook</span>
-          <i class="fab fa-facebook text-xl"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" rel="noreferrer"
-          class="text-gray-500 hover:text-tatreez-red transition-colors transform hover:-translate-y-1">
-          <span class="sr-only">Instagram</span>
-          <i class="fab fa-instagram text-xl"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noreferrer"
-          class="text-gray-500 hover:text-tatreez-red transition-colors transform hover:-translate-y-1">
-          <span class="sr-only">Twitter</span>
-          <i class="fab fa-twitter text-xl"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer"
-          class="text-gray-500 hover:text-tatreez-red transition-colors transform hover:-translate-y-1">
-          <span class="sr-only">LinkedIn</span>
-          <i class="fab fa-linkedin text-xl"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Copyright -->
-    <div
-      class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-      <p>&copy; 2026 Tatreez. All rights reserved.</p>
-      <p class="mt-2 md:mt-0">Designed by <a href="#"
-          class="font-semibold hover:text-tatreez-red transition-colors">Dina Jannoun</a></p>
-    </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><strong>TATREEZ</strong><p>Preserving the thread of Palestinian identity.</p></div>
+    <nav aria-label="Footer navigation">
+      <a href="../index.html">Home</a>
+      <a href="tatreez-history.html">The story</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="thoubs.html">Thoubs</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <small>© <span data-current-year></span> Tatreez</small>
   </div>
 </footer>
+<style>
+.site-footer{border-top:1px solid #25231f24;padding:34px 6%;background:#f4efe5;color:#716b60;font:12px 'DM Sans',Arial,sans-serif}
+.site-footer .footer-inner{max-width:1240px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.site-footer strong{font:600 16px 'Playfair Display',Georgia,serif;letter-spacing:.18em;color:#812f36}
+.site-footer p{margin:7px 0 0;font-style:italic}
+.site-footer nav{display:flex;gap:17px;flex-wrap:wrap}
+.site-footer a{color:inherit;text-decoration:none}.site-footer a:hover{color:#812f36}
+@media(max-width:650px){.site-footer .footer-inner{align-items:flex-start;flex-direction:column}.site-footer nav{gap:13px}}
+</style>
+<script>document.querySelectorAll('[data-current-year]').forEach(el=>el.textContent=new Date().getFullYear());</script>
